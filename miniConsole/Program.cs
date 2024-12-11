@@ -4,7 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        bool keepRunning = true;
+        List<Food> foodList = [];
+
+        while(keepRunning)
+        {
+
+        }
     }
 }
 
