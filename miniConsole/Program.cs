@@ -5,14 +5,85 @@ class Program
     static void Main(string[] args)
     {
         bool keepRunning = true;
-        List<Food> foodList = [];
+        List<Food> foodList = new List<Food>();
 
         while(keepRunning)
         {
+            Console.WriteLine("Welcome to Ludia's Food Court!!");
+            Console.WriteLine("1. Add a food item");
+            Console.WriteLine("2. Calculate total cost");
+            Console.WriteLine("3. End Transaction");
+            Console.Write("Please choose an option: ");
 
+            string option = Console.ReadLine();
+
+            switch(option)
+            {
+                case "1":
+                    AddFood(foodList);
+                    break;
+                case "2":
+                    CalculateTotal(foodList);
+                    break;
+                case "3":
+                    keepRunning = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid input.  Please try again.");
+                    break;
+            }
         }
+
+        Console.WriteLine("Thank you for dining at Ludia's Food Court!!  Please come again!!");
+    }
+
+    static void AddFood(List<Food> foodList)
+    {
+        Console.Write("Enter food name: ");
+        string name = Console.ReadLine();
+
+        double price = 0;
+        bool validPrice = false;
+
+        while (!validPrice)
+        {
+            Console.Write("Enter the price of the food: ");
+            string priceInput = Console.ReadLine();
+            
+            if (double.TryParse(priceInput, out price) && price > 0)
+            {
+                validPrice = true;
+            }
+            else
+            {
+                Console.WriteLine("Invalid price. Please enter a valid positive number.");
+            }
+        }
+
+        Food food = new Food(name, price);
+        foodList.Add(food);
+        Console.WriteLine($"Added {name} with price ${price:F2}.");
+    }
+    static void CalculateTotal(List<Food> foodList)
+    {
+        if (foodList.Count == 0)
+        {
+            Console.WriteLine("No food items added yet.");
+            return;
+        }
+
+        double totalCost = 0;
+
+        // Sum up the prices of all foods in the list
+        foreach (var food in foodList)
+        {
+            totalCost += food.Price;
+        }
+
+        Console.WriteLine($"Total cost of all food items: ${totalCost:F2}");
     }
 }
+
 
 
 /*
