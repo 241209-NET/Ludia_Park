@@ -7,7 +7,7 @@ class Program
         bool keepRunning = true;
         List<Food> foodList = new List<Food>();
 
-        while(keepRunning)
+        while(keepRunning)                          // research this
         {
             Console.WriteLine("Welcome to Ludia's Food Court!!");
             Console.WriteLine("1. Add a food item");
@@ -15,7 +15,7 @@ class Program
             Console.WriteLine("3. End Transaction");
             Console.Write("Please choose an option: ");
 
-            string option = Console.ReadLine();
+            string option = Console.ReadLine();         // question mark?
 
             switch(option)
             {
@@ -28,7 +28,7 @@ class Program
                 case "3":
                     keepRunning = false;
                     break;
-                default:
+                default:                                    // check default
                     Console.WriteLine("Invalid input.  Please try again.");
                     break;
             }
@@ -45,7 +45,7 @@ class Program
         while (!validName)
         {
             Console.Write("Enter food name: ");
-            name = Console.ReadLine();
+            name = Console.ReadLine();              // question mark?
 
             bool isValid = true;
             foreach(char c in name)
@@ -73,9 +73,9 @@ class Program
         while (!validPrice)
         {
             Console.Write("Enter the price of the food: ");
-            string priceInput = Console.ReadLine();
+            string priceInput = Console.ReadLine();                 // quesetion mark?
             
-            if (double.TryParse(priceInput, out price) && price > 0)
+            if (double.TryParse(priceInput, out price) && price > 0)        // fix parse
             {
                 validPrice = true;
             }
@@ -87,7 +87,7 @@ class Program
 
         Food food = new Food(name, price);
         foodList.Add(food);
-        Console.WriteLine($"Added {name} with price ${price:F2}.");
+        Console.WriteLine($"Added {name} with price ${price:F2}.");     // F2 = 2 decimal places
     }
     static void CalculateTotal(List<Food> foodList)
     {
@@ -100,7 +100,7 @@ class Program
         double totalCost = 0;
 
         // Sum up the prices of all foods in the list
-        foreach (var food in foodList)
+        foreach (var food in foodList)                  // research this more
         {
             totalCost += food.Price;
         }
@@ -118,10 +118,4 @@ Input validation
 Use a collection to store data
 Have a menu with atleast 3 options
 Transform or do some calculation with that data
-////////////////////
-
-- validate input: maybe the user inputs their age or something, and maybe you gotta make sure it is a number and not some letters.
-- use a collection: maybe it's a list of something
-- have a menu with 3 options: this is just a switch statement, such as add a movie, add new users, add a new car, etc.  one option can even be to quit the app. (maybe i can do this part next time?)
-- manipulate data: maybe u have a list of movies, and u can get the average rating of the movie.  maybe a user can input a movie name and a rating, and one of the "options"?  (maybe the menu?) you can get the calculated average rating.
 */
