@@ -1,4 +1,14 @@
-﻿namespace miniConsole;
+﻿/*
+C# .NET Console APP
+Take user input
+Input validation
+Use a collection to store data
+Have a menu with atleast 3 options
+Transform or do some calculation with that data
+*/
+
+
+namespace miniConsole;
 
 class Program
 {
@@ -15,7 +25,7 @@ class Program
             Console.WriteLine("3. End Transaction");
             Console.Write("Please choose an option: ");
 
-            string option = Console.ReadLine();         // question mark?
+            string? option = Console.ReadLine();         // ? = can be null or a string
 
             switch(option)
             {
@@ -28,8 +38,7 @@ class Program
                 case "3":
                     keepRunning = false;
                     break;
-                default:                                    // check default
-                    Console.WriteLine("Invalid input.  Please try again.");
+                default:                                    
                     break;
             }
         }
@@ -45,7 +54,7 @@ class Program
         while (!validName)
         {
             Console.Write("Enter food name: ");
-            name = Console.ReadLine();              // question mark?
+            string name = Console.ReadLine();              // question mark?
 
             bool isValid = true;
             foreach(char c in name)
@@ -73,7 +82,7 @@ class Program
         while (!validPrice)
         {
             Console.Write("Enter the price of the food: ");
-            string priceInput = Console.ReadLine();                 // quesetion mark?
+            string? priceInput = Console.ReadLine();                 
             
             if (double.TryParse(priceInput, out price) && price > 0)        // fix parse
             {
@@ -111,11 +120,4 @@ class Program
 
 
 
-/*
-C# .NET Console APP
-Take user input
-Input validation
-Use a collection to store data
-Have a menu with atleast 3 options
-Transform or do some calculation with that data
-*/
+
