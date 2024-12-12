@@ -54,26 +54,39 @@ class Program
         while (!validName)
         {
             Console.Write("Enter food name: ");
-            string name = Console.ReadLine();              // question mark?
+            name = Console.ReadLine();              // question mark?
+            // if (name.Length == 0)
+            // {
+            //     Console.WriteLine("You must enter a food name.");
+            //     continue;
+            // }
 
             bool isValid = true;
-            foreach(char c in name)
+            
+            foreach(char c in name)             // fix this so it breaks after first encounter, only prints once
             {
                 if (!Char.IsLetter(c))
                 {
+                    Console.WriteLine("Food name must only consist of alphabetic letters.  Please try again.");
                     isValid = false;
-                    break;
+                    continue;
                 }
             }
+            if (name.Length == 0)
+            {
+                Console.WriteLine("You must enter a food name.");
+                isValid = false;
+                continue;
+            }
 
-            if (isValid) 
+            else 
             {
                 validName = true;
             }
-            else 
-            {
-                Console.WriteLine("Food name must only consist of alphabetic letters.  Please try again.");
-            }
+            // else 
+            // {
+            //     Console.WriteLine("Food name must only consist of alphabetic letters.  Please try again.");
+            // }
         }
         
         double price = 0;
