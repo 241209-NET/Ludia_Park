@@ -39,9 +39,34 @@ class Program
 
     static void AddFood(List<Food> foodList)
     {
-        Console.Write("Enter food name: ");
-        string name = Console.ReadLine();
+        string name = "";
+        bool validName = false;
 
+        while (!validName)
+        {
+            Console.Write("Enter food name: ");
+            name = Console.ReadLine();
+
+            bool isValid = true;
+            foreach(char c in name)
+            {
+                if (!Char.IsLetter(c))
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (isValid) 
+            {
+                validName = true;
+            }
+            else 
+            {
+                Console.WriteLine("Food name must only consist of alphabetic letters.  Please try again.");
+            }
+        }
+        
         double price = 0;
         bool validPrice = false;
 
