@@ -19,7 +19,9 @@ class Program
 
         while(keepRunning)                          // research this
         {
-            Console.WriteLine("=== 🍕 Welcome to Ludia's Food Court!! 🍔 ===");
+            Console.WriteLine("==============================================");
+            Console.WriteLine("*** 🍕 Welcome to Ludia's Food Court!! 🍔 ***");
+            Console.WriteLine("==============================================");
             Console.WriteLine("1. Add a food item");
             Console.WriteLine("2. Calculate total cost");
             Console.WriteLine("3. End Transaction");
@@ -43,8 +45,9 @@ class Program
             }
         }
 
-        Console.WriteLine("Thank you for dining at Ludia's Food Court!!");
-        Console.WriteLine("=== 🍴 Please come again!! 🍴 ===");
+        Console.WriteLine("==============================================");
+        Console.WriteLine("*Thank you for dining at Ludia's Food Court!!*");
+        Console.WriteLine("========== 🍴 Please come again!!🍴 ==========");
     }
 
     static void AddFood(List<Food> foodList)
