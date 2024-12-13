@@ -19,9 +19,9 @@ class Program
 
         while(keepRunning)                          // research this
         {
-            Console.WriteLine("==============================================");
-            Console.WriteLine("*** 🍕 Welcome to Ludia's Food Court!! 🍔 ***");
-            Console.WriteLine("==============================================");
+            Console.WriteLine("🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥");
+            Console.WriteLine("⬜  🍕  Welcome to Ludia's Food Court!! 🍔  ⬜");
+            Console.WriteLine("🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥");
             Console.WriteLine("1. Add a food item");
             Console.WriteLine("2. Calculate total cost");
             Console.WriteLine("3. End Transaction");
@@ -44,7 +44,6 @@ class Program
                     break;
             }
         }
-
         Console.WriteLine("==============================================");
         Console.WriteLine("*Thank you for dining at Ludia's Food Court!!*");
         Console.WriteLine("========== 🍴 Please come again!!🍴 ==========");
@@ -59,15 +58,16 @@ class Program
         {
             Console.Write("Enter food name: ");
             name = Console.ReadLine()?.Trim();              // removing extra spaces and handle null input
-                if (name.Length == 0)
-                {
-                    Console.WriteLine("You must enter a food name.  Please try again.");
-                    continue;
-                }
+
+            if (name.Length == 0)
+            {
+                Console.WriteLine("You must enter a food name.  Please try again.");
+                continue;
+            }
 
             bool isValid = true;
             
-            foreach(char c in name)             // fix this so it breaks after first encounter, only prints once
+            foreach(char c in name)             
             {
                 if (!Char.IsLetter(c))
                 {
@@ -91,8 +91,8 @@ class Program
             Console.Write("Enter the price of the food: ");
             string? priceInput = Console.ReadLine();                 
             
-            if (double.TryParse(priceInput, out price) && price > 0)        // fix parse
-            // if (price.Parse()  > 0) 
+            price = double.Parse(priceInput);
+            if (price > 0) 
             {
                 validPrice = true;
             }
@@ -104,7 +104,7 @@ class Program
 
         Food food = new Food(name, price);
         foodList.Add(food);
-        Console.WriteLine($"Added {name} with price ${price:F2}.");     // F2 = 2 decimal places
+        Console.WriteLine($"Added: [ {name}: ${price:F2} ]");     // F2 = 2 decimal places
     }
     static void CalculateTotal(List<Food> foodList)
     {
@@ -122,7 +122,7 @@ class Program
             totalCost += food.Price;
         }
 
-        Console.WriteLine($"Total cost of all food items: ${totalCost:F2}");
+        Console.WriteLine($"Your total today is: [ {totalCost:F2} ]");
     }
 }
 
