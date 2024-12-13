@@ -17,7 +17,7 @@ class Program
         bool keepRunning = true;
         List<Food> foodList = new List<Food>();
 
-        while(keepRunning)                          // research this
+        while (keepRunning)                          // research this
         {
             Console.WriteLine("🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥⬜🟥");
             Console.WriteLine("⬜  🍕  Welcome to Ludia's Food Court!! 🍔  ⬜");
@@ -29,7 +29,7 @@ class Program
 
             string? option = Console.ReadLine();         // ? = can be null or a string
 
-            switch(option)
+            switch (option)
             {
                 case "1":
                     AddFood(foodList);
@@ -67,7 +67,7 @@ class Program
 
             bool isValid = true;
             
-            foreach(char c in name)             
+            foreach (char c in name)             
             {
                 if (!Char.IsLetter(c))
                 {
@@ -116,8 +116,7 @@ class Program
 
         double totalCost = 0;
 
-        // Sum up the prices of all foods in the list
-        foreach (var food in foodList)                  // research this more
+        foreach (var food in foodList)                  
         {
             totalCost += food.Price;
         }
