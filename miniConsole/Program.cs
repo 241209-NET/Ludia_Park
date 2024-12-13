@@ -19,7 +19,7 @@ class Program
 
         while(keepRunning)                          // research this
         {
-            Console.WriteLine("Welcome to Ludia's Food Court!!");
+            Console.WriteLine("=== 🍕 Welcome to Ludia's Food Court!! 🍔 ===");
             Console.WriteLine("1. Add a food item");
             Console.WriteLine("2. Calculate total cost");
             Console.WriteLine("3. End Transaction");
@@ -43,7 +43,8 @@ class Program
             }
         }
 
-        Console.WriteLine("Thank you for dining at Ludia's Food Court!!  Please come again!!");
+        Console.WriteLine("Thank you for dining at Ludia's Food Court!!");
+        Console.WriteLine("=== 🍴 Please come again!! 🍴 ===");
     }
 
     static void AddFood(List<Food> foodList)
@@ -54,12 +55,12 @@ class Program
         while (!validName)
         {
             Console.Write("Enter food name: ");
-            name = Console.ReadLine();              // question mark?
-            // if (name.Length == 0)
-            // {
-            //     Console.WriteLine("You must enter a food name.");
-            //     continue;
-            // }
+            name = Console.ReadLine()?.Trim();              // removing extra spaces and handle null input
+                if (name.Length == 0)
+                {
+                    Console.WriteLine("You must enter a food name.  Please try again.");
+                    continue;
+                }
 
             bool isValid = true;
             
@@ -69,24 +70,14 @@ class Program
                 {
                     Console.WriteLine("Food name must only consist of alphabetic letters.  Please try again.");
                     isValid = false;
-                    continue;
+                    break;
                 }
             }
-            if (name.Length == 0)
-            {
-                Console.WriteLine("You must enter a food name.");
-                isValid = false;
-                continue;
-            }
-
-            else 
+    
+            if (isValid)
             {
                 validName = true;
             }
-            // else 
-            // {
-            //     Console.WriteLine("Food name must only consist of alphabetic letters.  Please try again.");
-            // }
         }
         
         double price = 0;
@@ -98,12 +89,13 @@ class Program
             string? priceInput = Console.ReadLine();                 
             
             if (double.TryParse(priceInput, out price) && price > 0)        // fix parse
+            // if (price.Parse()  > 0) 
             {
                 validPrice = true;
             }
             else
             {
-                Console.WriteLine("Invalid price. Please enter a valid positive number.");
+                Console.WriteLine("Invalid price. Please enter a value greater than 0.");
             }
         }
 
