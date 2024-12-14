@@ -121,7 +121,7 @@ class Program
             totalCost += food.Price;
         }
 
-        Console.WriteLine($"Your total today is: [ {totalCost:F2} ]");
+        Console.WriteLine($"Your total today is: [ ${totalCost:F2} ]");
     }
 }
 
