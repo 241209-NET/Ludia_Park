@@ -1,0 +1,6 @@
+@LudisFoodCourt.API_HostAddress = http://localhost:5127
+
+GET {{LudisFoodCourt.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
