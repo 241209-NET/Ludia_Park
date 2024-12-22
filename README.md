@@ -23,11 +23,6 @@
 
 ## Diners
 
-### Creating an empty cart
-* As a diner, I want to be able to create a new cart to start my tab.
-  * When I'm on the `/carts` page:
-    * I cab create a new, empty cart.
-
 ### Adding food item
 * As a diner, I want to be able to add new food items with its quantity to my cart.
   * When I'm on the `/carts/:cartId/items` page:
@@ -36,7 +31,7 @@
       * Then I can add a new food item and its quantity to my cart.
     * If this is not my first time:
       * I can add a new food item and its quantity to my cart.
-      
+
 
 
 
