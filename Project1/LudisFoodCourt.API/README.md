@@ -1,6 +1,7 @@
 # <div align="center">🍕Welcome to Ludi's Food Court!!🍔<div>
 ### <div align="center">Come on in and enjoy the different foods we have to offer!!<div>
-![image](https://github.com/user-attachments/assets/a0d7ae90-907a-42b1-b511-750c8e6f2152)
+![image](https://github.com/user-attachments/assets/fe425760-9347-406c-963a-cd553b352adc)
+
 
 
 # Database Schema
