@@ -2,7 +2,7 @@
 
 ## Vendors
 
-### Add food item
+### Adding food item
 
 * As a vendor, I want to be able to add a new food item to my menu.
   * When I'm on the `/foods/:foodId` page:
@@ -21,6 +21,22 @@
     * I can permanently delete a food item from my menu.
 
 
+## Diners
+
+### Creating an empty cart
+* As a diner, I want to be able to create a new cart to start my tab.
+  * When I'm on the `/carts` page:
+    * I cab create a new, empty cart.
+
+### Adding food item
+* As a diner, I want to be able to add new food items with its quantity to my cart.
+  * When I'm on the `/carts/:cartId/items` page:
+    * If this is my first time adding to cart:
+      * I can create a new, empty cart first.
+      * Then I can add a new food item and its quantity to my cart.
+    * If this is not my first time:
+      * I can add a new food item and its quantity to my cart.
+      
 
 
 
