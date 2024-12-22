@@ -1,3 +1,10 @@
+
+# Database Schema
+
+![image](https://github.com/user-attachments/assets/2c17958a-1a03-4a95-9932-8eaa9db74745)
+
+
+
 # User Stories
 
 
