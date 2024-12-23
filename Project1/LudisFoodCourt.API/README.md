@@ -20,7 +20,7 @@
     * I can get a list of all vendors.
 
 
-## View menu of vendor by vendor id 🗒️🍜
+## View menu of vendor by vendor id 🍜
 * I can get a list of all foods available at each vendor.
   * When I'm on the `/vendors/:vendorId/foods` page:
     * I can get a list of all foods at this vendor by its id.
@@ -52,7 +52,7 @@
     * I can permanently delete a food item from my menu.
 
 
-## Diners 😋🍴
+## Diners 🫃
 
 ### Create diner + cart
 * I want to be able to create a new diner and his/her new cart.
