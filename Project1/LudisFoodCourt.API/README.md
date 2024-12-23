@@ -70,14 +70,8 @@
     * I can get a list of all current food items with their quantities and total price in my cart.
 
 
-## Getting available food items
+## Getting available food items by vendor
 
-### All foods in food court
-* I can get a list of all foods available at Ludi's Food Court.
-  * When I'm on the `/foods` page:
-    * I can get a list of all foods.
-
-### All foods by vendor
 * I can get a list of all foods available at each vendor.
   * When I'm on the `/vendors/:vendorId/foods` page:
     * I can get a list of all foods at this vendor by its id.
