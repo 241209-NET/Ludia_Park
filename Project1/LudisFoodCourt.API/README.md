@@ -14,7 +14,9 @@
 
 ## Database Schema
 
-![image](https://github.com/user-attachments/assets/bad7bc91-d5f3-456a-a641-e736aaaf1f76) 
+![image](https://github.com/user-attachments/assets/221ca8ad-13ac-43d5-95cd-84189013d6b0)
+
+
 
 <br />
 
