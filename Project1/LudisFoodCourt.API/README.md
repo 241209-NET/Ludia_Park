@@ -14,21 +14,21 @@
 # User Stories
 
 
-## Peruse through the food court and see all vendors
+## Peruse through the food court and see all vendors 🏪
 * I can get a list of all vendors available at Ludi's Food Court.
   * When I'm on the `/vendors` page:
     * I can get a list of all vendors.
 
 
-## View menu of vendor by vendor id
+## View menu of vendor by vendor id 🗒️🍜
 * I can get a list of all foods available at each vendor.
   * When I'm on the `/vendors/:vendorId/foods` page:
     * I can get a list of all foods at this vendor by its id.
 
-    
-## Vendors
 
-### Create vendor
+## Vendors 👨‍🍳
+
+### Create vendor 
 * I want to be able to create a new vendor.
   * When I'm on the `/vendors` page:
     * I can a register a new vendor.
@@ -52,7 +52,7 @@
     * I can permanently delete a food item from my menu.
 
 
-## Diners
+## Diners 😋🍴
 
 ### Create diner + cart
 * I want to be able to create a new diner and his/her new cart.
