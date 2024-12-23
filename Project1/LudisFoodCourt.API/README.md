@@ -6,7 +6,8 @@
 
 # Database Schema
 
-![image](https://github.com/user-attachments/assets/2c17958a-1a03-4a95-9932-8eaa9db74745)
+![image](https://github.com/user-attachments/assets/bad7bc91-d5f3-456a-a641-e736aaaf1f76)
+
 
 
 
