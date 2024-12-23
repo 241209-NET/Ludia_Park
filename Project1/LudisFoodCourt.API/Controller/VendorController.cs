@@ -4,5 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]   // auto validates model of incoming req's.
 public class VendorController : ControllerBase
 {
-  
+  // [HttpGet]
+  // public IActionResult GetAllVendors()
+  // {
+    
+  // }
 }
