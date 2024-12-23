@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LudisFoodCourt.Api.Controller;
 
-[Route("/vendors")]
+[Route("api/[controller]")]    // in ASP.NET must use double quotes, DO NOT start with /.
 [ApiController]   // auto validates model of incoming req's.
-public class VendorController : ControllerBase
-{
+public class VendorsController : ControllerBase    // [controller] gets replaced by vendors from VendorsController 
+{                                     // ControllerBase is for building RESTful api: Ok(), NotFound(), etc.
   [HttpGet]
   public IActionResult GetAllVendors()
   {
