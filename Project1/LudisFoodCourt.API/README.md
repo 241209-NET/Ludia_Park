@@ -1,26 +1,26 @@
 # <div align="center">🍕Welcome to Ludi's Food Court!!🍔<div>
-### <div align="center">Come on in and enjoy the tasty foods we have to offer!!<div>
+<div align="center">Come on in and enjoy the tasty foods we have to offer!!<div>
 ![image](https://github.com/user-attachments/assets/fe425760-9347-406c-963a-cd553b352adc)
 
 
 
-# Database Schema
+## Database Schema
 
 ![image](https://github.com/user-attachments/assets/bad7bc91-d5f3-456a-a641-e736aaaf1f76)
 
 
 
 
-# User Stories
+## User Stories
 
 
-## Peruse through the food court and see all vendors 🏪
+### Peruse through the food court and see all vendors 🏪
 * I can get a list of all vendors available at Ludi's Food Court.
   * When I'm on the `/vendors` page:
     * I can get a list of all vendors.
 
 
-## View menu of vendor by vendor id 🍜
+### View menu of vendor by vendor id 🍜
 * I can get a list of all foods available at each vendor.
   * When I'm on the `/vendors/:vendorId/foods` page:
     * I can get a list of all foods at this vendor by its id.
