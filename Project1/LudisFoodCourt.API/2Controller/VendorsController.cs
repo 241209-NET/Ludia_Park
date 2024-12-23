@@ -9,12 +9,18 @@ namespace LudisFoodCourt.Api.Controller;
 public class VendorsController : ControllerBase    // [controller] gets replaced by vendors from VendorsController 
 {                                     // ControllerBase is for building RESTful api: Ok(), NotFound(), etc.
   
+  [HttpGet("{vendorId}/foods")]
+  public IActionResult GetFoodsOfVendor(int vendorId)
+  {
+    var foodsOfVendor = _vendorService.GetAllFoodsOfVendor(vendorId);
+    return Ok(foodsOfVendor);
+  }
 
   // [HttpPost("{vendorId}/foods")]
-  // public IActionResult AddFoodToMenu(Food newFood)
+  // public IActionResult AddFoodToMenu(int vendorId, Food food)
   // {
-  //   var createdFood = 
-  //   return Created(createdFood);
+  //   var newFood = 
+  //   return Created(newFood);
   // }
 
   [HttpGet]
@@ -26,9 +32,9 @@ public class VendorsController : ControllerBase    // [controller] gets replaced
   }
 
   // [HttpPost]
-  // public IActionResult CreateVendor(Vendor newVendor)
+  // public IActionResult CreateVendor(Vendor vendor)
   // {
-  //   var createdPet = 
-  //   return Created(createdPet);
+  //   var newVendor = 
+  //   return Created(newVendor);
   // }
 }

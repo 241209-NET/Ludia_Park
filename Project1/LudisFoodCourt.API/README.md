@@ -14,6 +14,18 @@
 # User Stories
 
 
+## Peruse through the food court and see all vendors
+* I can get a list of all vendors available at Ludi's Food Court.
+  * When I'm on the `/vendors` page:
+    * I can get a list of all vendors.
+
+
+## View menu of vendor by vendor id
+* I can get a list of all foods available at each vendor.
+  * When I'm on the `/vendors/:vendorId/foods` page:
+    * I can get a list of all foods at this vendor by its id.
+
+    
 ## Vendors
 
 ### Create vendor
@@ -70,17 +82,8 @@
     * I can get a list of all current food items with their quantities and total price in my cart.
 
 
-## Getting available food items by vendor
-
-* I can get a list of all foods available at each vendor.
-  * When I'm on the `/vendors/:vendorId/foods` page:
-    * I can get a list of all foods at this vendor by its id.
 
 
-## Getting available vendors
-* I can get a list of all vendors available at Ludi's Food Court.
-  * When I'm on the `/vendors` page:
-    * I can get a list of all vendors.
 
    
 
