@@ -15,4 +15,7 @@ public class Vendor
   [Required]
   [MaxLength(100)]
   public string FoodType { get; set; }
+
+  // Navigation property: A Vendor can have many Foods
+  public ICollection<Food> Foods { get; set; }
 }
