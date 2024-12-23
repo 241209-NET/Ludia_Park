@@ -3,31 +3,39 @@
 
 ![image](https://github.com/user-attachments/assets/fe425760-9347-406c-963a-cd553b352adc)
 
-<div align="right">by: Ludia Park</div>
+<div align="right">by: Ludia Park</div> 
+
+<br />
+
+***
+ <br />
 
 ## Database Schema
 
-![image](https://github.com/user-attachments/assets/bad7bc91-d5f3-456a-a641-e736aaaf1f76)
+![image](https://github.com/user-attachments/assets/bad7bc91-d5f3-456a-a641-e736aaaf1f76) 
 
+<br />
 
+***
 
+<br />
 
 ## User Stories
 
-
-### Peruse through the food court and see all vendors 🏪
+<strong>Peruse through the food court and see all vendors</strong> 🏪
 * I can get a list of all vendors available at Ludi's Food Court.
   * When I'm on the `/vendors` page:
     * I can get a list of all vendors.
 
 
-### View menu of vendor by vendor id 🍜
+<strong>View menu of vendor by vendor id</strong> 🍜
 * I can get a list of all foods available at each vendor.
   * When I'm on the `/vendors/:vendorId/foods` page:
     * I can get a list of all foods at this vendor by its id.
 
+#
 
-### Vendors 👨‍🍳
+### Vendors: 👨‍🍳
 
 <strong>Create vendor</strong> 
 * I want to be able to create a new vendor.
@@ -48,9 +56,10 @@
 * As a vendor, I want to be able to delete my food items.
   * When I'm on the `/foods/:foodId` page:
     * I can permanently delete a food item from my menu.
+      
+#
 
-
-### Diners 🫃
+### Diners: 🫃
 
 <strong>Create diner + cart</strong>
 * I want to be able to create a new diner and his/her new cart.
@@ -77,8 +86,13 @@
 <strong>Getting all items in cart</strong>
 * As a diner, I can get a list of all items in my cart, along with the total.
   * When I'm on the `/carts/:cartId` page:
-    * I can get a list of all current food items with their quantities and total price in my cart.
+    * I can get a list of all current food items with their quantities and total price in my cart. 
 
+<br />
+
+***
+
+<br />
 
 
 
