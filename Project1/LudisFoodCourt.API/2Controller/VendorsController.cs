@@ -5,10 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace LudisFoodCourt.Api.Controller;
 
 [Route("api/[controller]")]    // in ASP.NET must use double quotes, DO NOT start with /.
-[ApiController]   // auto validates model of incoming req's.
-public class VendorsController : ControllerBase    // [controller] gets replaced by vendors from VendorsController 
-{                                     // ControllerBase is for building RESTful api: Ok(), NotFound(), etc.
-  
+[ApiController]                // auto validates model of incoming req's.
+public class VendorsController : ControllerBase    
+{                                     
+  private readonly IVendorService _vendorService;
+  public VendorsController(IVendorService vendorService)  // constructor using DI
+  {
+    _vendorService = vendorService;
+  }
+
   [HttpGet("{vendorId}/foods")]
   public IActionResult GetFoodsOfVendor(int vendorId)
   {
@@ -38,3 +43,12 @@ public class VendorsController : ControllerBase    // [controller] gets replaced
   //   return Created(newVendor);
   // }
 }
+
+
+/*
+- [controller] gets replaced by vendors from [Vendors]Controller 
+- ControllerBase is for building RESTful api: Ok(), NotFound(), etc.
+- Private readonly: The _vendorService field will hold the instance of IVendorService 
+  that the controller will use to interact with your business logic layer. 
+  It’s marked as readonly, which means it can only be assigned once (in the constructor).
+*/

@@ -24,3 +24,11 @@ public class VendorService : IVendorService
     throw new NotImplementedException();
   }
 } 
+
+
+/*
+The VendorService class is the implementation of the IVendorService interface. 
+It provides the actual functionality of your application. 
+For now, the methods throw NotImplementedException, indicating that the business logic hasn’t been written yet. 
+When you implement these methods, this class will contain the logic that interacts with your data layer (like a database) to retrieve and manipulate data.
+*/
