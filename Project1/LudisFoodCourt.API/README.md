@@ -101,6 +101,28 @@
 ## Project Requirements
 * ASP.NET Core application
 * Should build and run
+* Unit Testing (20% code coverage for Services layer)
+* Should be RESTful API
+
+<br />
+
+***
+
+<br />
+
+## Tech Stack
+* C# (Back End Programming Language)
+* SQL Server (local DB)
+* EF Core (ORM Tech)
+* ASP.NET (Web API Framework)
+
+<br />
+
+***
+
+<br />
+
+
 
 
 
