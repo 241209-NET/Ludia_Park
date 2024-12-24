@@ -4,15 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Food
 {
-  [Key]
-  [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-  public int Id { get; set; }
+  public int Id { get; set; }   // entity framework auto knows all Id's are pk's.
 
-  [Required]
   [MaxLength(100)]
-  public string Name { get; set; }
+  public string Name { get; set; }      // without ? after string, it is auto not nullable.
 
-  [Required]
   [Column(TypeName = "decimal(4, 2)")]
   public decimal Price { get; set; }
 
