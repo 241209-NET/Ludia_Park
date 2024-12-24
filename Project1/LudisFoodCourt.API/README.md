@@ -98,6 +98,9 @@
 
 <br />
 
+## Project Requirements
+* ASP.NET Core application
+* Should build and run
 
 
 
