@@ -1,3 +1,5 @@
+using LudisFoodCourt.Api.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,11 +24,13 @@ builder.Services.AddDbContext<PetContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-//Dependency Inject the proper services
-builder.Services.AddScoped<IPetService, PetService>();
-builder.Services.AddScoped<IPetRepository, PetRepository>();
 */
+
+// Dependency Inject the proper services
+// whenever IVendorService is called, pass in concrete impl of VendorService.
+builder.Services.AddScoped<IVendorService, VendorService>();
+// builder.Services.AddScoped<IPetRepository, PetRepository>();
+
 
 // Add our controllers
 builder.Services.AddControllers();
