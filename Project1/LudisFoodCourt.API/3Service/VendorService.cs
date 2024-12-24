@@ -6,29 +6,32 @@ namespace LudisFoodCourt.Api.Service;
 public class VendorService : IVendorService
 {
   private readonly IVendorRepository _vendorRepository;
+  private readonly IFoodRepository _foodRepository;
 
-  public VendorService(IVendorRepository vendorRepository) => _vendorRepository = vendorRepository;
-
-
-
-  public Food AddFoodToMenu(int vendorId, Food food)
+  public VendorService(IVendorRepository vendorRepository, IFoodRepository foodRepository) 
   {
-    throw new NotImplementedException();
-  }
-
-  public Vendor CreateVendor(Vendor vendor)
-  {
-    throw new NotImplementedException();
+    _vendorRepository = vendorRepository;
+    _foodRepository = foodRepository;
   }
 
   public IEnumerable<Food> GetAllFoodsOfVendor(int vendorId)
   {
-    throw new NotImplementedException();
+    return _vendorRepository.GetAllByVendor(vendorId);
+  }
+
+  public Food AddFoodToMenu(int vendorId, Food food)
+  {
+    return _vendorRepository.AddFoodToMenu(vendorId, food);  
   }
 
   public IEnumerable<Vendor> GetAllVendors()
   {
-    throw new NotImplementedException();
+    return _vendorRepository.GetAll();
+  }
+
+  public Vendor CreateVendor(Vendor vendor)
+  {
+    return _vendorRepository.Add(vendor);
   }
 } 
 
