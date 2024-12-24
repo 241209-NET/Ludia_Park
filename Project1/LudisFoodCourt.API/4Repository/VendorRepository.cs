@@ -4,6 +4,8 @@ namespace LudisFoodCourt.Api.Repository;
 
 public class VendorRepository : IVendorRepository
 {
+  // we need a db to work with
+
   public IEnumerable<Food> GetAllByVendor(int vendorId)
   {
     throw new NotImplementedException();
