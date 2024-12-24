@@ -122,6 +122,14 @@
 
 <br />
 
+## MVP Feature List
+* Upon diner creation, cart gets created.
+* Diners can add to, update, or delete items in their cart.
+* Cart will have all items added and the total price.
+* Vendors can be created.
+* Vendors can add, update, or delete food items from their menus.
+* Menus can be viewed by vendor.
+* A list of all vendors can be viewed.
 
 
 
