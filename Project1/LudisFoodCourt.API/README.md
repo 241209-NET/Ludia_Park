@@ -133,6 +133,17 @@
 
 <br />
 
+***
+
+<br />
+
+## Stretch Goals
+* Implement login sessions for diners.
+* Diners can return to the food court with their logins and start a new cart.
+
+
+<br />
+
 
    
 
