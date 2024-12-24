@@ -24,6 +24,11 @@ public class VendorService : IVendorService
     return _vendorRepository.AddFoodToMenu(vendorId, food);  
   }
 
+  public Vendor GetVendorById(int vendorId)         // for 201 status
+  {
+    return _vendorRepository.GetById(vendorId);
+  }
+
   public IEnumerable<Vendor> GetAllVendors()
   {
     return _vendorRepository.GetAll();

@@ -6,6 +6,7 @@ public interface IVendorService
 {
   IEnumerable<Food> GetAllFoodsOfVendor(int vendorId);    
   Food AddFoodToMenu(int vendorId, Food food);
+  Vendor GetVendorById(int vendorId);           // for 201 status
   IEnumerable<Vendor> GetAllVendors();
   Vendor CreateVendor(Vendor vendor);
 }

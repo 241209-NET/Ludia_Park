@@ -30,6 +30,12 @@ public class VendorsController : ControllerBase
   }
 
   [HttpGet("{vendorId}")]
+  public IActionResult GetVendorById(int vendorId)    // for 201 status
+  {
+    var foundVendor = _vendorService.GetVendorById(vendorId);
+    if (foundVendor == null) return NotFound();
+    return Ok(foundVendor);
+  }
 
   [HttpGet]
   public IActionResult GetAllVendors()

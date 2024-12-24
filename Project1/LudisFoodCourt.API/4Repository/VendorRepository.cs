@@ -18,9 +18,14 @@ public class VendorRepository : IVendorRepository
   public Food AddFoodToMenu(int vendorId, Food food)
   {
     food.VendorId = vendorId;  // Associate the food with the vendor
-    _dataContext.Foods.Add(food);  // Add the food to the Foods table
-    _dataContext.SaveChanges();    // Save the changes to the database
-    return food;               // Return the added food item
+    _dataContext.Foods.Add(food);  
+    _dataContext.SaveChanges();    
+    return food;               
+  }
+
+  public Vendor GetById(int vendorId)
+  {
+    return _dataContext.Vendors.Find(vendorId);
   }
 
   public IEnumerable<Vendor> GetAll()
