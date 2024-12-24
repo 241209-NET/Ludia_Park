@@ -1,6 +1,7 @@
-using LudisFoodCourt.Api.Service;
-using LudisFoodCourt.Api.Data;
 using Microsoft.EntityFrameworkCore;
+using LudisFoodCourt.Api.Data;
+using LudisFoodCourt.Api.Repository;
+using LudisFoodCourt.Api.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,7 @@ builder.Services.AddSwaggerGen();
 // Dependency Inject the proper services
 // whenever IVendorService is called, pass in concrete impl of VendorService.
 builder.Services.AddScoped<IVendorService, VendorService>();
-// builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IVendorRepository, VendorRepository>();
 
 
 // Add our controllers

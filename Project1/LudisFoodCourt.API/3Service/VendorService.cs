@@ -1,9 +1,16 @@
 using LudisFoodCourt.Api.Model;
+using LudisFoodCourt.Api.Repository;
 
 namespace LudisFoodCourt.Api.Service;
 
 public class VendorService : IVendorService
 {
+  private readonly IVendorRepository _vendorRepository;
+
+  public VendorService(IVendorRepository vendorRepository) => _vendorRepository = vendorRepository;
+
+
+
   public Food AddFoodToMenu(int vendorId, Food food)
   {
     throw new NotImplementedException();
