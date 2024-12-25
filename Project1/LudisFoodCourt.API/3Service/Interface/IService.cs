@@ -4,8 +4,8 @@ namespace LudisFoodCourt.Api.Service;
 
 public interface IVendorService
 {
-  IEnumerable<Food> GetAllFoodsOfVendor(int vendorId);    
-  Food AddFoodToMenu(int vendorId, Food food);
+  IEnumerable<Food> GetAllFoodsOfVendor(int vendorId);  // stay   
+  Food AddFoodToMenu(int vendorId, Food food);   // stay
   Vendor? GetVendorById(int vendorId);           // for 201 status
   IEnumerable<Vendor> GetAllVendors();
   Vendor CreateVendor(Vendor vendor);
@@ -29,4 +29,9 @@ Using interfaces decouples the VendorsController from the actual implementation 
 The controller only depends on the interface, not the concrete class. 
 This makes the system more flexible and maintainable. 
 You can change the implementation of VendorService later without modifying the controller, as long as the contract (the interface) stays the same.
+
+- GetAllFoodsOfVendor & AddFoodToMenu must live in Vendor Services due to the url path in vendor controller.
+  - however, these methods must use methods from Food repo, since it must talk with Food data.
+  - en fin, use vendors services, but use food repo for these 2.
+
 */

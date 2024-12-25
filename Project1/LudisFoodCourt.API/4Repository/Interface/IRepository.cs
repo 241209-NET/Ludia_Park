@@ -4,8 +4,6 @@ namespace LudisFoodCourt.Api.Repository;
 
 public interface IVendorRepository
 {
-  IEnumerable<Food> GetAllByVendor(int vendorId);
-  Food AddFoodToMenu(int vendorId, Food food);  // this is a custom one: add a food to a specific vendor
   Vendor? GetById(int vendorId);       // for 201 status
   IEnumerable<Vendor> GetAll(); // Get all vendors
   Vendor Add(Vendor vendor);  // creating a new vendor
@@ -13,7 +11,7 @@ public interface IVendorRepository
 
 public interface IFoodRepository
 {
+  IEnumerable<Food> GetAllByVendor(int vendorId);   // moved
+  Food Add(Food food);    // moved.  this can be simple now, service layer takes care of setting correct VendorId.
   Food? GetById(int foodId);     // for 201
 }
-
-// Food Add(Food food);  // this is just plain add food to all foods.

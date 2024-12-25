@@ -10,6 +10,7 @@ namespace LudisFoodCourt.Api.Controller;
 public class FoodsController : ControllerBase    
 {                                     
   private readonly IFoodService _foodService;
+  
   public FoodsController(IFoodService foodService)  // constructor using DI
   {
     _foodService = foodService;
