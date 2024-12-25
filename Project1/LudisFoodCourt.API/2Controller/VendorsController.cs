@@ -4,14 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LudisFoodCourt.Api.Controller;
 
+
 [Route("api/[controller]")]    // in ASP.NET must use double quotes, DO NOT start with /.
 [ApiController]                // auto validates model of incoming req's.
 public class VendorsController : ControllerBase    
 {                                     
-  private readonly IVendorService _vendorService;
-  public VendorsController(IVendorService vendorService)  // constructor using DI
+  private readonly IVendorService _vendorService;   // declaring private field for interfaces
+  private readonly IFoodService _foodService;
+
+  public VendorsController(IVendorService vendorService, IFoodService foodService)  // constructor using DI
   {
-    _vendorService = vendorService;
+    _vendorService = vendorService;   // initialize IVendorService
+    _foodService = foodService;       // initialize IFoodService
   }
 
   [HttpGet("{vendorId}/foods")]
@@ -26,7 +30,7 @@ public class VendorsController : ControllerBase
   {
     var newFood = _vendorService.AddFoodToMenu(vendorId, food);
 
-    return CreatedAtAction(nameof(GetFoodById), new { id = newFood.Id }, newFood);
+    return CreatedAtAction(nameof(FoodsController.GetFoodById), new { id = newFood.Id }, newFood);
   }
 
   [HttpGet("{vendorId}")]

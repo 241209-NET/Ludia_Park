@@ -37,6 +37,8 @@ builder.Services.AddSwaggerGen();
 // whenever IVendorService is called, pass in concrete impl of VendorService.
 builder.Services.AddScoped<IVendorService, VendorService>();
 builder.Services.AddScoped<IVendorRepository, VendorRepository>();
+builder.Services.AddScoped<IFoodService, FoodService>();
+builder.Services.AddScoped<IFoodRepository, FoodRepository>();
 
 
 // Add our controllers

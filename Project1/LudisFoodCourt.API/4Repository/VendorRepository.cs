@@ -5,7 +5,6 @@ namespace LudisFoodCourt.Api.Repository;
 
 public class VendorRepository : IVendorRepository
 {
-  // we need a db to work with
   private readonly DataContext _dataContext;
 
   public VendorRepository(DataContext dataContext) => _dataContext = dataContext;
@@ -23,7 +22,7 @@ public class VendorRepository : IVendorRepository
     return food;               
   }
 
-  public Vendor GetById(int vendorId)
+  public Vendor? GetById(int vendorId)
   {
     return _dataContext.Vendors.Find(vendorId);
   }

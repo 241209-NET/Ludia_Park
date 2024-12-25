@@ -10,7 +10,7 @@ public partial class DataContext : DbContext  // when still working on this file
   public DataContext(DbContextOptions<DataContext> options) : base(options){}
 
   public virtual DbSet<Vendor> Vendors { get; set; }
-  public virtual DbSet<Vendor> Foods { get; set; }
+  public virtual DbSet<Food> Foods { get; set; }
 }
 
 /*

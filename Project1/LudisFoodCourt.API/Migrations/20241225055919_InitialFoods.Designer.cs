@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LudisFoodCourt.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241224164414_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241225055919_InitialFoods")]
+    partial class InitialFoods
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ namespace LudisFoodCourt.API.Migrations
 
                     b.HasIndex("VendorId");
 
-                    b.ToTable("Food");
+                    b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("LudisFoodCourt.Api.Model.Vendor", b =>

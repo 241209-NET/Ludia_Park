@@ -5,7 +5,7 @@
 namespace LudisFoodCourt.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialFoods : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,7 +25,7 @@ namespace LudisFoodCourt.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Food",
+                name: "Foods",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -36,9 +36,9 @@ namespace LudisFoodCourt.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Food", x => x.Id);
+                    table.PrimaryKey("PK_Foods", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Food_Vendors_VendorId",
+                        name: "FK_Foods_Vendors_VendorId",
                         column: x => x.VendorId,
                         principalTable: "Vendors",
                         principalColumn: "Id",
@@ -46,8 +46,8 @@ namespace LudisFoodCourt.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Food_VendorId",
-                table: "Food",
+                name: "IX_Foods_VendorId",
+                table: "Foods",
                 column: "VendorId");
         }
 
@@ -55,7 +55,7 @@ namespace LudisFoodCourt.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Food");
+                name: "Foods");
 
             migrationBuilder.DropTable(
                 name: "Vendors");

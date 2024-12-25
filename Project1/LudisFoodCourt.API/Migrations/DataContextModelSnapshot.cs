@@ -44,7 +44,7 @@ namespace LudisFoodCourt.API.Migrations
 
                     b.HasIndex("VendorId");
 
-                    b.ToTable("Food");
+                    b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("LudisFoodCourt.Api.Model.Vendor", b =>
