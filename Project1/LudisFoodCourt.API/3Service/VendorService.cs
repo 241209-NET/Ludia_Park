@@ -16,12 +16,16 @@ public class VendorService : IVendorService
 
   public IEnumerable<Food> GetAllFoodsOfVendor(int vendorId)
   {
-    return _vendorRepository.GetAllByVendor(vendorId);
+    // return _vendorRepository.GetAllByVendor(vendorId);
+    return _foodRepository.GetAllByVendor(vendorId);
   }
 
   public Food AddFoodToMenu(int vendorId, Food food)
   {
-    return _vendorRepository.AddFoodToMenu(vendorId, food);  
+    // return _vendorRepository.AddFoodToMenu(vendorId, food);  
+    // first associate food with vendorId
+    food.VendorId = vendorId;
+    return _foodRepository.Add(food);
   }
 
   public Vendor? GetVendorById(int vendorId)         // for 201 status
