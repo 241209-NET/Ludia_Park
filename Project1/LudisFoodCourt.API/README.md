@@ -2,6 +2,8 @@
 
 # <div align="center">🍕Welcome to Ludi's Food Court!!🍔<div>
 <div align="center"><strong>Come on in and enjoy the tasty foods we have to offer!!</strong></div>
+Ludi's Food Court is a place where diners can come, order foods from different vendors, and have their total calculated in their cart!
+I hope you have a wonderful time here.  ❤️
 
 ![image](https://github.com/user-attachments/assets/fe425760-9347-406c-963a-cd553b352adc)
 
