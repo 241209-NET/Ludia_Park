@@ -5,6 +5,10 @@
 Ludi's Food Court is a place where diners can come, order foods from different vendors, and have their total calculated in their cart!
 I hope you have a wonderful time here.  ❤️
 
+<br />
+<br />
+
+
 ![image](https://github.com/user-attachments/assets/fe425760-9347-406c-963a-cd553b352adc)
 
 <div align="right">by: Ludia Park</div> 
