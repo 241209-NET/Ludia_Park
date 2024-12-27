@@ -37,3 +37,7 @@ app.MapControllers();
 app.Run();
 
 
+/*
+DataContext is the object representation of our sql db.
+*/
+

@@ -18,9 +18,22 @@ public class VendorsController : ControllerBase
     _foodService = foodService;       // initialize IFoodService
   }
 
+  // helper method for check if vendor exists:
+  private IActionResult CheckVendorExists(int vendorId)
+  {
+    var foundVendor = _vendorService.GetVendorById(vendorId);
+    if (foundVendor == null) return NotFound(); // 404 if doesn't exist
+    return null; // exists
+  }
+
   [HttpGet("{vendorId}/foods")]
   public IActionResult GetAllFoodsOfVendor(int vendorId)
   {
+    // if findVendor not found:
+    var vendorFindRes = CheckVendorExists(vendorId);
+    if (vendorFindRes != null) return vendorFindRes;    // returns 404
+
+    // if found:
     var foodsOfVendor = _vendorService.GetAllFoodsOfVendor(vendorId);
     return Ok(foodsOfVendor);
   }
@@ -28,16 +41,23 @@ public class VendorsController : ControllerBase
   [HttpPost("{vendorId}/foods")]
   public IActionResult AddFoodToMenu(int vendorId, Food food)
   {
-    var newFood = _vendorService.AddFoodToMenu(vendorId, food);
+    // if findVendor not found:
+    var vendorFindRes = CheckVendorExists(vendorId);
+    if (vendorFindRes != null) return vendorFindRes;    // returns 404    
 
-    return CreatedAtAction(nameof(FoodsController.GetFoodById), new { id = newFood.Id }, newFood);
+    // // if found:
+    var newFood = _vendorService.AddFoodToMenu(vendorId, food);
+    return CreatedAtAction(nameof(FoodsController.GetFoodById), new { foodId = newFood.Id }, newFood);
   }
 
   [HttpGet("{vendorId}")]
   public IActionResult GetVendorById(int vendorId)    // for 201 status
   {
+    // if findVendor not found:
+    var vendorFindRes = CheckVendorExists(vendorId);
+    if (vendorFindRes != null) return vendorFindRes;    // returns 404 
+    
     var foundVendor = _vendorService.GetVendorById(vendorId);
-    if (foundVendor == null) return NotFound();
     return Ok(foundVendor);
   }
 
@@ -52,7 +72,7 @@ public class VendorsController : ControllerBase
   public IActionResult CreateVendor(Vendor vendor)
   {
     var newVendor = _vendorService.CreateVendor(vendor);
-    return CreatedAtAction(nameof(GetVendorById), new { id = newVendor.Id }, newVendor);
+    return CreatedAtAction(nameof(GetVendorById), new { vendorId = newVendor.Id }, newVendor);
   }
 }
 
@@ -69,4 +89,6 @@ public class VendorsController : ControllerBase
   3) new object
 - GetFoodById endpoint must be made in order for this Created status to work.
   (even though I don't need it for my app)
+- CreatedAtAction(nameof(FoodsController.GetFoodById), new { foodId = newFood.Id }:
+  - for new { foodId =...}  it must be foodId because that is what the param of GetFoodById endpoint uses.
 */
