@@ -40,6 +40,13 @@ public class VendorService : IVendorService
   {
     return _vendorRepository.Add(vendor);
   }
+
+  // helper function to check if exists:
+  public bool CheckVendorExists(int vendorId)
+  {
+    var foundVendor = _vendorRepository.GetById(vendorId);
+    return foundVendor != null;
+  }
 } 
 
 

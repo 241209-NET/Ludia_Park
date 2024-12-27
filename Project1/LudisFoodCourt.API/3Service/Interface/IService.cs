@@ -9,6 +9,9 @@ public interface IVendorService
   Vendor? GetVendorById(int vendorId);           // for 201 status
   IEnumerable<Vendor> GetAllVendors();
   Vendor CreateVendor(Vendor vendor);
+
+  // helper function:
+  bool CheckVendorExists(int vendorId);   
 }
 
 public interface IFoodService
