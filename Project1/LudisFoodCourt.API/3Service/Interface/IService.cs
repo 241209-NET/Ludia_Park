@@ -16,10 +16,8 @@ public interface IVendorService
 
 public interface IFoodService
 {
-  Food GetFoodById(int foodId);     // for 201
-  Food UpdateFood(int foodId, Food food);
-  // helper function:
-  bool CheckFoodExists(int foodId); 
+  Food? GetFoodById(int foodId);     // for 201
+  Food? UpdateFood(int foodId, Food food);
 }
 
 /*

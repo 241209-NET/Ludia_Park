@@ -10,20 +10,39 @@ namespace LudisFoodCourt.Api.Controller;
 public class FoodsController : ControllerBase    
 {                                     
   private readonly IFoodService _foodService;
+  private readonly IVendorService _vendorService;
   
-  public FoodsController(IFoodService foodService)  // constructor using DI
+  public FoodsController(IFoodService foodService, IVendorService vendorService)  // constructor using DI
   {
     _foodService = foodService;
+    _vendorService = vendorService;
   }
 
   [HttpPut("{foodId}/edit")]
   public IActionResult UpdateFood(int foodId, Food food)
   {
-    // if findFood not found:
-    if (!_foodService.CheckFoodExists(foodId)) return NotFound();
-
-    // if found: 
+    // tell service to check if food exists there before updating
     var updatedFood = _foodService.UpdateFood(foodId, food);
+
+    // check each type of null, provide the correct status for each
+    if (updatedFood == null) 
+    {
+      // try getting it first
+      var existingFood = _foodService.GetFoodById(foodId);
+
+      // 1. if the VendorId's don't match the original food's VendorId:
+      if (existingFood?.VendorId != food.VendorId)  // may be null food
+      {
+        return Forbid();
+      }
+
+      // 2. if vendor doesn't exist:
+      bool vendorExists = _vendorService.CheckVendorExists(food.VendorId);
+      if (!vendorExists) return NotFound();
+
+      // 3. food not found:
+      return NotFound();
+    }
     return Ok(updatedFood);
   }
 
@@ -33,8 +52,7 @@ public class FoodsController : ControllerBase
     var foundFood = _foodService.GetFoodById(foodId);
     
     // Explicitly check if food exists:
-    if (foundFood == null) return NotFound();  // returns HTTP 404 Not Found
-    
+    if (foundFood == null) return NotFound();  
     return Ok(foundFood);
   }
 
