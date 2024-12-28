@@ -14,20 +14,23 @@ public class VendorService : IVendorService
     _foodRepository = foodRepository;
   }
 
-  public IEnumerable<Food> GetAllFoodsOfVendor(int vendorId)
+  public IEnumerable<Food>? GetAllFoodsOfVendor(int vendorId)
   {
+    if (!CheckVendorExists(vendorId)) return null;  // vendor doesn't exist
     return _foodRepository.GetAllByVendor(vendorId);
   }
 
   public Food AddFoodToMenu(int vendorId, Food food)
   {
-    // first associate food with vendorId, this logic must be done in service layer, keep repo simple.
+    if (!CheckVendorExists(vendorId)) return null;    // vendor doesn't exist
+    // assign vendorId param as new food's VendorId
     food.VendorId = vendorId;
-    return _foodRepository.Add(food);   // simple add
+    return _foodRepository.Add(food);   
   }
 
-  public Vendor? GetVendorById(int vendorId)         // for 201 status
+  public Vendor? GetVendorById(int vendorId)         // for 201 
   {
+    if (!CheckVendorExists(vendorId)) return null;  // vendor doesn't exist
     return _vendorRepository.GetById(vendorId);
   }
 
@@ -41,7 +44,7 @@ public class VendorService : IVendorService
     return _vendorRepository.Add(vendor);
   }
 
-  // helper function to check if exists:
+  // helper function to check if vendor exists:
   public bool CheckVendorExists(int vendorId)
   {
     var foundVendor = _vendorRepository.GetById(vendorId);
