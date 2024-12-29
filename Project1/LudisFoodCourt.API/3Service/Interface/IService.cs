@@ -18,6 +18,7 @@ public interface IFoodService
 {
   Food? UpdateFood(int foodId, Food food);
   Food? GetFoodById(int foodId);     // for 201
+  void DeleteFood(int foodId);    // for 204 NoContent status, return nothing
 }
 
 /*

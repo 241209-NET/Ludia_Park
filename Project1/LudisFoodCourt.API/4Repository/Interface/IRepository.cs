@@ -15,4 +15,5 @@ public interface IFoodRepository
   Food? Add(Food food);    // moved.  this can be simple now, service layer takes care of setting correct VendorId.
   Food? Update(Food food);
   Food? GetById(int foodId);     // for 201
+  bool Delete(int foodId);    // repo is bool but service is void
 }

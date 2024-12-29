@@ -34,4 +34,13 @@ public class FoodRepository : IFoodRepository
     return _dataContext.Foods.Find(foodId);
   }
 
+  public bool Delete(int foodId)
+  {
+    var foundFood = _dataContext.Foods.Find(foodId);
+    if (foundFood == null) return false;
+
+    _dataContext.Foods.Remove(foundFood);
+    _dataContext.SaveChanges();
+    return true;
+  }
 }

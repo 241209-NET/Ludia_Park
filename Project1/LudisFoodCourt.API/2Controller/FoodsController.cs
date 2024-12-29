@@ -59,12 +59,14 @@ public class FoodsController : ControllerBase
   [HttpDelete("{foodId}")]
   public IActionResult DeleteFood(int foodId)
   {
-    var foundFood = _foodService.GetFoodById(foodId);
-
-    // if food not found:
-    if (foundFood == null) return NotFound();  
-
-    _foodService.DeleteFood(foodId);
-    return NoContent();     // this is status 204, common status for signifying successful deletion with no res body.
+    try
+    {
+      _foodService.DeleteFood(foodId);  // if this works
+      return NoContent(); // returns 204 No Content for successful deletion
+    }
+    catch (KeyNotFoundException)  // the special exception thrown by service, msg already written in service.
+    {
+      return NotFound(); // 404 if food not found
+    }
   }
 }

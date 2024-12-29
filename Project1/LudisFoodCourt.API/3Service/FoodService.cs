@@ -49,4 +49,15 @@ public class FoodService : IFoodService
     return _foodRepository.GetById(foodId);
   }
 
+  public void DeleteFood(int foodId)
+  {
+    // in the repo, it either deletes it + true or returns false if fails.
+    // ie) the repo handles existence check + deletion in 1 step, it is already done.
+    var boolDeleted = _foodRepository.Delete(foodId); 
+
+    if (!boolDeleted)
+    {
+      throw new KeyNotFoundException("Food not found.");
+    }
+  }
 }
