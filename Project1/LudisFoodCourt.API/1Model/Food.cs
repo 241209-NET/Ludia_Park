@@ -18,5 +18,5 @@ public class Food
   public int VendorId { get; set; }  // This is the foreign key property
 
   // Navigation property: A Food item is related to a single Vendor
-  public Vendor? Vendor { get; set; } 
+  public Vendor Vendor { get; set; } 
 }
