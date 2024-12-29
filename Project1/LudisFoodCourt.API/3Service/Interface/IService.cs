@@ -4,8 +4,8 @@ namespace LudisFoodCourt.Api.Service;
 
 public interface IVendorService
 {
-  IEnumerable<Food> GetAllFoodsOfVendor(int vendorId);  // stay   
-  Food AddFoodToMenu(int vendorId, Food food);   // stay
+  IEnumerable<Food>? GetAllFoodsOfVendor(int vendorId);  // stay   
+  Food? AddFoodToMenu(int vendorId, Food food);   // stay
   Vendor? GetVendorById(int vendorId);           // for 201 status
   IEnumerable<Vendor> GetAllVendors();
   Vendor CreateVendor(Vendor vendor);

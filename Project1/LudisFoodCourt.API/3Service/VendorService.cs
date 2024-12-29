@@ -20,7 +20,7 @@ public class VendorService : IVendorService
     return _foodRepository.GetAllByVendor(vendorId);
   }
 
-  public Food AddFoodToMenu(int vendorId, Food food)
+  public Food? AddFoodToMenu(int vendorId, Food food)
   {
     if (!CheckVendorExists(vendorId)) return null;    // vendor doesn't exist
     // assign vendorId param as new food's VendorId

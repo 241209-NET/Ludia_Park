@@ -22,32 +22,40 @@ public class VendorsController : ControllerBase
   [HttpGet("{vendorId}/foods")]
   public IActionResult GetAllFoodsOfVendor(int vendorId)
   {
-    // if findVendor not found:
-    if (!_vendorService.CheckVendorExists(vendorId)) return NotFound();
-
-    // if found:
     var foodsOfVendor = _vendorService.GetAllFoodsOfVendor(vendorId);
+    // if findVendor not found:
+    if (foodsOfVendor == null)
+    {
+      return NotFound(new { message = "Vendor not found" });  // custom NotFound msg
+    }
+
     return Ok(foodsOfVendor);
   }
 
   [HttpPost("{vendorId}/foods")]
   public IActionResult AddFoodToMenu(int vendorId, Food food)
   {
-    // if findVendor not found:
-    if (!_vendorService.CheckVendorExists(vendorId)) return NotFound();    
-
-    // if found:
     var newFood = _vendorService.AddFoodToMenu(vendorId, food);
+
+    // if vendor not found:
+    if (newFood == null)
+    {
+      return NotFound(new { message = "Vendor not found" });  // custom NotFound msg
+    }    
+
     return CreatedAtAction(nameof(FoodsController.GetFoodById), new { foodId = newFood.Id }, newFood);
   }
 
   [HttpGet("{vendorId}")]
   public IActionResult GetVendorById(int vendorId)    // for 201 status
   {
-    // if findVendor not found:
-    if (!_vendorService.CheckVendorExists(vendorId)) return NotFound();    
-
     var foundVendor = _vendorService.GetVendorById(vendorId);
+    // if vendor not found:
+    if (foundVendor == null)
+    {
+      return NotFound();    // no need for custom, since this is plain vendor.
+    }    
+
     return Ok(foundVendor);
   }
 
