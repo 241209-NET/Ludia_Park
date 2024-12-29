@@ -1,12 +1,14 @@
-namespace LudisFoodCourt.Api.Model;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LudisFoodCourt.Api.Model;
+
 
 public class Food
 {
   public int Id { get; set; }   // entity framework auto knows all Id's are pk's.
 
-  [MaxLength(100)]
+  [MaxLength(50)]
   public string Name { get; set; } = "";      // without ? after string, it is auto not nullable.
 
   [Column(TypeName = "decimal(4, 2)")]
