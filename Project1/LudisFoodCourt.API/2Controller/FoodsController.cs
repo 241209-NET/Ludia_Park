@@ -51,7 +51,7 @@ public class FoodsController : ControllerBase
   {
     var foundFood = _foodService.GetFoodById(foodId);
     
-    // Explicitly check if food exists:
+    // if food not found:
     if (foundFood == null) return NotFound();  
     return Ok(foundFood);
   }

@@ -50,12 +50,9 @@ public class VendorsController : ControllerBase
   public IActionResult GetVendorById(int vendorId)    // for 201 status
   {
     var foundVendor = _vendorService.GetVendorById(vendorId);
+    
     // if vendor not found:
-    if (foundVendor == null)
-    {
-      return NotFound();    // no need for custom, since this is plain vendor.
-    }    
-
+    if (foundVendor == null) return NotFound();    // no need for custom, since this is plain vendor. 
     return Ok(foundVendor);
   }
 

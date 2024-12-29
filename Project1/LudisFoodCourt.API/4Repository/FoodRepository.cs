@@ -20,7 +20,7 @@ public class FoodRepository : IFoodRepository
     return food;               
   }
 
-  public Food Update(Food food)
+  public Food? Update(Food food)
   {
     {
       _dataContext.Foods.Update(food);
@@ -29,7 +29,7 @@ public class FoodRepository : IFoodRepository
     }
   }
 
-  public Food GetById(int foodId)            // 201
+  public Food? GetById(int foodId)            // 201
   {
     return _dataContext.Foods.Find(foodId);
   }

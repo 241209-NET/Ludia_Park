@@ -30,7 +30,7 @@ public class VendorService : IVendorService
 
   public Vendor? GetVendorById(int vendorId)         // for 201 
   {
-    if (!CheckVendorExists(vendorId)) return null;  // vendor doesn't exist
+    // already returns null if doesn't find.
     return _vendorRepository.GetById(vendorId);
   }
 

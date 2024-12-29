@@ -20,19 +20,17 @@ public class FoodService : IFoodService
 
     if (existingFood == null) return null;    // food not found
 
-    // 2. check if VendorId in req body matches existing food's VendorId
-    if (existingFood.VendorId != food.VendorId)
-    {
-      // return Forbidden error
-      // or simply
-      return null;
-    } 
-
-    // 3. check if VendorId exists
+    // 2. check if VendorId exists
     bool vendorExists = _vendorService.CheckVendorExists(food.VendorId);
     if (!vendorExists)
     {
       return null;
+    } 
+
+    // 3. check if VendorId in req body matches existing food's VendorId
+    if (existingFood.VendorId != food.VendorId)
+    {
+      return null;    // forbidden auth!!
     } 
 
     // 4. updating:
@@ -47,6 +45,7 @@ public class FoodService : IFoodService
 
   public Food? GetFoodById(int foodId)     // null or food obj
   {
+    // already returns null if doesn't find.
     return _foodRepository.GetById(foodId);
   }
 
