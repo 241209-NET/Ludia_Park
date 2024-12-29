@@ -18,8 +18,7 @@ Come on in and enjoy the tasty foods we have to offer!!  ❤️
 
 ## Database Schema
 
-![image](https://github.com/user-attachments/assets/221ca8ad-13ac-43d5-95cd-84189013d6b0)
-
+![image](https://github.com/user-attachments/assets/2b261cd7-9a0b-4449-9634-8155a1696cb6)
 
 
 <br />
