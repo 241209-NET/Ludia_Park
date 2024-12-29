@@ -56,10 +56,15 @@ public class FoodsController : ControllerBase
     return Ok(foundFood);
   }
 
-  // [HttpDelete("{foodId}")]
-  // public IActionResult DeleteFood(int foodId)
-  // {
-  //   //////////
-  // }
+  [HttpDelete("{foodId}")]
+  public IActionResult DeleteFood(int foodId)
+  {
+    var foundFood = _foodService.GetFoodById(foodId);
 
+    // if food not found:
+    if (foundFood == null) return NotFound();  
+
+    _foodService.DeleteFood(foodId);
+    return NoContent();     // this is status 204, common status for signifying successful deletion with no res body.
+  }
 }
