@@ -16,6 +16,14 @@ public class DinersController : ControllerBase
     _dinerService = dinerService;
   }
 
+  [HttpGet("{dinerId}")]
+  public IActionResult GetDinerById(int dinerId)    // for 201
+  {
+    var foundDiner = _dinerService.GetDinerById(dinerId);
+
+    if (foundDiner == null) return NotFound();
+    return Ok(foundDiner);
+  }
 
   [HttpPost]
   public IActionResult CreateDinerAndCart([FromBody] Diner diner)

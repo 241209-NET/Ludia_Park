@@ -19,6 +19,6 @@ public class CartItem   // joint table
   
   // Navigation property: 1 Cart has Many CartItems
   public Cart Cart { get; set; } 
-  // Navigation property: 1 Food appears in Many CartItems (since 1 food can appear in multiple carts)
+  // Navigation property: 1 Food appears in Many CartItems (many foods to many carts)
   public Food Food { get; set; }
 }

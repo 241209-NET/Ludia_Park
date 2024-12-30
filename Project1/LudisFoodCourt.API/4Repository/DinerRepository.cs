@@ -10,6 +10,11 @@ public class DinerRepository : IDinerRepository
   {
     _dataContext = dataContext;
   } 
+
+  public Diner? GetById(int dinerId)      // for 201
+  {
+    return _dataContext.Diners.Find(dinerId);
+  }
     
   public Diner Add(Diner diner)
   {

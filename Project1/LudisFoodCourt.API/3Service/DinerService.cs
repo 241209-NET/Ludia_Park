@@ -14,6 +14,11 @@ public class DinerService : IDinerService
     _cartRepository = cartRepository;
   }
 
+  public Diner? GetDinerById(int dinerId)
+  {
+    return _dinerRepository.GetById(dinerId);
+  }
+
   public Diner CreateDinerAndCart(Diner diner)
   {
     // 1. create diner + add to repo

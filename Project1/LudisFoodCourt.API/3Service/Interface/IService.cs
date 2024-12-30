@@ -23,6 +23,7 @@ public interface IFoodService
 
 public interface IDinerService
 {
+  Diner? GetDinerById(int dinerId);
   Diner CreateDinerAndCart(Diner diner);
 }
 

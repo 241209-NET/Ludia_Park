@@ -17,6 +17,6 @@ public class Cart
 
   // Navigation property: 1 Cart to 1 Diner
   public Diner Diner { get; set; }
-  // Navigation property: 1 Cart to Many Cart Items
-  public ICollection<CartItem> CartItems { get; set; }
+  // Navigation property: Many to Many with Foods via CartItems
+  public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 }

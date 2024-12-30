@@ -20,6 +20,7 @@ public interface IFoodRepository
 
 public interface IDinerRepository
 {
+  Diner? GetById(int dinerId);    // for 201
   Diner Add(Diner diner);
 }
 

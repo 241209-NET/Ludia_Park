@@ -20,5 +20,7 @@ public class Food
   public int VendorId { get; set; }  
 
   // Navigation property: A Food item is related to a single Vendor
-  public Vendor Vendor { get; set; } 
+  public Vendor Vendor { get; set; }
+  // Navigation property: Many Foods to Many Carts via CartItems (1 food in many cart items)
+  public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 }
