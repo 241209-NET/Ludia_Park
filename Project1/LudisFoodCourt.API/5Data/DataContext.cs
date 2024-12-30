@@ -33,6 +33,11 @@ public partial class DataContext : DbContext  // when still working on this file
       .WithOne(d => d.Cart)         // Diner has one Cart
       .HasForeignKey<Cart>(c => c.DinerId)  // Foreign key is on Cart
       .IsRequired(); // This also ensures Cart is required for Diner
+
+    // the recommended way to add a unique constraint to a column:
+    modelBuilder.Entity<Diner>()
+      .HasIndex(d => d.Name)
+      .IsUnique();
   }
 }
 

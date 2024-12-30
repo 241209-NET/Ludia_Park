@@ -21,6 +21,11 @@ public interface IFoodService
   void DeleteFood(int foodId);    // for 204 NoContent status, return nothing
 }
 
+public interface IDinerService
+{
+  Diner CreateDinerAndCart(Diner diner);
+}
+
 /*
 - Separation of concerns: 
 The interface separates the definition of the service (the "what" the service does) 

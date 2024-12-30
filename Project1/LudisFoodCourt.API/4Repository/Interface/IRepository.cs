@@ -20,7 +20,7 @@ public interface IFoodRepository
 
 public interface IDinerRepository
 {
-  Diner? Add(Diner diner);
+  Diner Add(Diner diner);
 }
 
 public interface ICartRepository
