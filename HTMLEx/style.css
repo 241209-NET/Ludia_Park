@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(95, 124, 125);
+  background-color: rgb(118, 150, 151);
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -43,8 +43,9 @@ li {
 #lower-container {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap;
-  justify-content: center; */
+  /* flex-wrap: wrap; */
+  /* align-content: center; */
+  /* align-items: center; */
 }
 
 img {
@@ -55,4 +56,29 @@ img {
   border-radius: 500px;
   margin: 30px 0px;
   border: 5px solid rgb(143, 121, 0);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.glow {
+  box-shadow: 0 0 30px 15px rgb(255, 255, 131);
+}
+
+button {
+  padding: 10px;
+  width: 150px;
+  font-size: 20px;
+  margin-left: auto;
+  border-radius: 15px;
+  background-color: rgb(250, 243, 186);
+  border: 5px groove rgb(143, 121, 0);
+  color: rgb(103, 87, 0);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#luisBtn {
+  font-size: 15px;
+  padding: 15px;
+  width: 150px;
 }
