@@ -6,7 +6,10 @@ namespace LudisFoodCourt.Api.Repository;
 public class VendorRepository : IVendorRepository
 {
   private readonly DataContext _dataContext;
-  public VendorRepository(DataContext dataContext) => _dataContext = dataContext;
+  public VendorRepository(DataContext dataContext) 
+  {
+    _dataContext = dataContext;
+  }
 
   public Vendor? GetById(int vendorId)        // 201
   {

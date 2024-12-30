@@ -17,3 +17,13 @@ public interface IFoodRepository
   Food? GetById(int foodId);     // for 201
   bool Delete(int foodId);    // repo is bool but service is void
 }
+
+public interface IDinerRepository
+{
+  Diner? Add(Diner diner);
+}
+
+public interface ICartRepository
+{
+  Cart Add(Cart cart);
+}

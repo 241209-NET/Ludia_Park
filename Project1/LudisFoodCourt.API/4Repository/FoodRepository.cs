@@ -6,7 +6,10 @@ namespace LudisFoodCourt.Api.Repository;
 public class FoodRepository : IFoodRepository
 {
   private readonly DataContext _dataContext;
-  public FoodRepository(DataContext dataContext) => _dataContext = dataContext;
+  public FoodRepository(DataContext dataContext)
+  {
+    _dataContext = dataContext;
+  }
 
   public IEnumerable<Food>? GetAllByVendor(int vendorId) // moved
   {
