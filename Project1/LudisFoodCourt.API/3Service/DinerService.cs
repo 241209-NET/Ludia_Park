@@ -1,4 +1,5 @@
 using LudisFoodCourt.Api.Model;
+using LudisFoodCourt.Api.Repository;
 
 namespace LudisFoodCourt.Api.Service;
 
@@ -22,7 +23,7 @@ public class DinerService : IDinerService
     var newCart = new Cart
     {
       DinerId = newDiner.Id,      // give it the diner's id
-      Total = 0 ////////////////////////  give it a default in model
+      // omit Total, since default starts at 0
     };
 
     // 3. add cart to repo

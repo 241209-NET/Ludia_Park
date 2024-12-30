@@ -33,8 +33,14 @@ public class VendorsController : ControllerBase
   }
 
   [HttpPost("{vendorId}/foods")]
-  public IActionResult AddFoodToMenu(int vendorId, Food food)
+  public IActionResult AddFoodToMenu(int vendorId, [FromBody] Food food)
   {
+    // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
+    if (!ModelState.IsValid)
+    {
+      return BadRequest(ModelState);
+    }
+
     var newFood = _vendorService.AddFoodToMenu(vendorId, food);
 
     // if vendor not found:
@@ -64,8 +70,14 @@ public class VendorsController : ControllerBase
   }
 
   [HttpPost]
-  public IActionResult CreateVendor(Vendor vendor)
+  public IActionResult CreateVendor([FromBody] Vendor vendor)
   {
+    // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
+    if (!ModelState.IsValid)
+    {
+      return BadRequest(ModelState);
+    }
+
     var newVendor = _vendorService.CreateVendor(vendor);
     return CreatedAtAction(nameof(GetVendorById), new { vendorId = newVendor.Id }, newVendor);
   }
@@ -86,4 +98,7 @@ public class VendorsController : ControllerBase
   (even though I don't need it for my app)
 - CreatedAtAction(nameof(FoodsController.GetFoodById), new { foodId = newFood.Id }:
   - for new { foodId =...}  it must be foodId because that is what the param of GetFoodById endpoint uses.
+- all requests with data in req body must include [FromBody]: POST, PUT, PATCH.  
+  - the incoming JSON will be deserialized into the Diner obj, and u can work with it.
+  - later on, when you have form data in front-end, u omit [FromBody].
 */

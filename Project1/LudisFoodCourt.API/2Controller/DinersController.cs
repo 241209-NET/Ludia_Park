@@ -1,4 +1,5 @@
 using LudisFoodCourt.Api.Model;
+using LudisFoodCourt.Api.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LudisFoodCourt.Api.Controller;
@@ -9,21 +10,24 @@ namespace LudisFoodCourt.Api.Controller;
 public class DinersController : ControllerBase
 {
   private readonly IDinerService _dinerService;
-  private readonly ICartService _cartService;
 
-  public DinersController(IDinerService dinerService, ICartService cartService)
+  public DinersController(IDinerService dinerService)
   {
     _dinerService = dinerService;
-    _cartService = cartService;
   }
 
 
   [HttpPost]
-  public IActionResult CreateDinerAndCart(Diner diner, Cart cart)
+  public IActionResult CreateDinerAndCart([FromBody] Diner diner)
   {
-    var newDiner = _dinerService.CreateDiner(diner);
-    var newCart = _cartService.CreateCart(cart);
+    // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
+    if (!ModelState.IsValid)
+    {
+      return BadRequest(ModelState);
+    }
 
-    return CreatedAtAction(nameof(GetDinerById, GetCartById), new { dinerId = newDiner.Id, cartId = newCart.Id }, [newDiner, newCart]);
+    var newDiner = _dinerService.CreateDinerAndCart(diner);
+
+    return CreatedAtAction(nameof(GetDinerById), new { dinerId = newDiner.Id }, newDiner);
   }
 }

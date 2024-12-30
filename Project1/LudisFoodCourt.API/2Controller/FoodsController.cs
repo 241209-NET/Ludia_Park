@@ -19,8 +19,14 @@ public class FoodsController : ControllerBase
   }
 
   [HttpPut("{foodId}/edit")]
-  public IActionResult UpdateFood(int foodId, Food food)
+  public IActionResult UpdateFood(int foodId, [FromBody] Food food)
   {
+    // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
+    if (!ModelState.IsValid)
+    {
+      return BadRequest(ModelState);
+    }
+    
     // tell service to check if food exists there before updating
     var updatedFood = _foodService.UpdateFood(foodId, food);
 
