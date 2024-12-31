@@ -23,3 +23,25 @@ public class FoodInputDTO
   [Column(TypeName = "decimal(4, 2)")]
   public decimal Price { get; set; }
 }
+
+public class FoodOutputDTO
+{
+  public int Id { get; set; }
+  public string Name { get; set; }
+  public decimal Price { get; set; }
+}
+
+public class FoodOutput2DTO
+{
+  public int Id { get; set; }
+  public string Name { get; set; }
+  public decimal Price { get; set; }
+  public int VendorId { get; set; }
+}
+
+public class VendorOutputDTO
+{
+  public int Id { get; set; }
+  public string Name { get; set; }
+  public string FoodType { get; set; }
+}

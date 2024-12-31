@@ -28,23 +28,6 @@ public class VendorService : IVendorService
     return _foodRepository.Add(food);   
   }
 
-//   public Food? AddFoodToMenu(int vendorId, Food food)
-// {
-//     if (!CheckVendorExists(vendorId)) return null; // vendor doesn't exist
-
-//     // Check if the food already exists for this vendor
-//     var existingFood = _foodRepository
-//                         .GetAll()
-//                         .FirstOrDefault(f => f.Name == food.Name && f.VendorId == vendorId);
-//     if (existingFood != null) 
-//     {
-//         return existingFood; // Avoid adding the same food again
-//     }
-
-//     food.VendorId = vendorId;
-//     return _foodRepository.Add(food);
-// }
-
   public Vendor? GetVendorById(int vendorId)         // for 201 
   {
     // already returns null if doesn't find.

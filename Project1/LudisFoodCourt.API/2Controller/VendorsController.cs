@@ -27,17 +27,23 @@ public class VendorsController : ControllerBase
     // if findVendor not found:
     if (foodsOfVendor == null)
     {
-      return NotFound(new { message = "Vendor not found" });  // custom NotFound msg
+      return NotFound("Vendor not found");  // custom NotFound msg
     }
 
-    return Ok(foodsOfVendor);
+    // map the list of foods to FoodDto:
+    var foodDtos = foodsOfVendor.Select(f => new FoodOutputDTO
+    {
+      Id = f.Id,
+      Name = f.Name,
+      Price = f.Price
+    }).ToList();
+
+    return Ok(foodDtos);
   }
 
-  [HttpPost("{vendorId}/foods")]      // doesn't work
+  [HttpPost("{vendorId}/foods")]     
   public IActionResult AddFoodToMenu(int vendorId, [FromBody] FoodInputDTO foodInputDTO)
   {
-
-    // return Ok(new { message = "endpoint works", foodInputDTO});  // debugging
     // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
     if (!ModelState.IsValid)
     {
@@ -60,7 +66,16 @@ public class VendorsController : ControllerBase
       return NotFound("Vendor not found");  // custom NotFound msg
     }
 
-    return Ok(newFood);
+    // Map the createdFood object to FoodOutput2DTO
+    var foodDto = new FoodOutput2DTO
+    {
+      Id = newFood.Id,
+      Name = newFood.Name,
+      Price = newFood.Price,
+      VendorId = newFood.VendorId // Include VendorId in the response
+    };
+
+    return Ok(foodDto);   // note to self: CreatedAtAction doesn't work cross-controllers
   }
 
   [HttpGet("{vendorId}")]
@@ -77,7 +92,16 @@ public class VendorsController : ControllerBase
   public IActionResult GetAllVendors()
   {
     var vendors = _vendorService.GetAllVendors();
-    return Ok(vendors);
+
+    // Map vendor data to vendor dto:
+    var vendorDtos = vendors.Select(v => new VendorOutputDTO
+    {
+      Id = v.Id,
+      Name = v.Name,
+      FoodType = v.FoodType
+    });
+
+    return Ok(vendorDtos);
   }
 
   [HttpPost]
@@ -90,7 +114,16 @@ public class VendorsController : ControllerBase
     }
 
     var newVendor = _vendorService.CreateVendor(vendor);
-    return CreatedAtAction(nameof(GetVendorById), new { vendorId = newVendor.Id }, newVendor);
+
+    // map it
+    var vendorDto = new VendorOutputDTO
+    {
+      Id = newVendor.Id,
+      Name = newVendor.Name,
+      FoodType = newVendor.FoodType
+    };
+
+    return CreatedAtAction(nameof(GetVendorById), new { vendorId = newVendor.Id }, vendorDto);
   }
 }
 
