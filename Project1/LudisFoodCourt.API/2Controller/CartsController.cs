@@ -48,4 +48,15 @@ public class CartsController : ControllerBase
       return NotFound(new { message = e.Message }); // 404 if food not found
     }
   }
+
+  // [HttpPost("{cartId}/foods")]
+
+  [HttpGet("{cartId}")]
+  public IActionResult GetAllCartItems(int cartId)
+  {
+    var allCartItems = _cartItemService.GetAllCartItems(cartId);
+    // cart not found:
+    if (allCartItems == null) return NotFound(new { message = "Cart not found." });
+    return Ok(allCartItems);
+  }
 }

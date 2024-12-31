@@ -6,10 +6,12 @@ namespace LudisFoodCourt.Api.Service;
 public class CartItemService : ICartItemService
 {
   private readonly ICartItemRepository _cartItemRepository;
+  private readonly ICartRepository _cartRepository;
 
-  public CartItemService(ICartItemRepository cartItemRepository)
+  public CartItemService(ICartItemRepository cartItemRepository, ICartRepository cartRepository)
   {
     _cartItemRepository = cartItemRepository;
+    _cartRepository = cartRepository;
   }
   
   public void UpdateCartItem(int cartId, int foodId, int qty)
@@ -37,5 +39,15 @@ public class CartItemService : ICartItemService
     {
       throw new KeyNotFoundException("CartItem not found.");
     }
+  }
+
+  public IEnumerable<CartItem>? GetAllCartItems(int cartId)
+  {
+    // 1. check if cart exists
+    var cart = _cartRepository.GetById(cartId);
+    if (cart == null) return null;
+    
+    // 2. if exists, get all items.
+    return _cartItemRepository.GetAllByCartId(cartId);
   }
 }

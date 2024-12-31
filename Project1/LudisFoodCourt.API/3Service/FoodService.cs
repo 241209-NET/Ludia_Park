@@ -58,7 +58,7 @@ public class FoodService : IFoodService
 
     if (!boolDeleted)
     {
-      throw new KeyNotFoundException("Food not found.");
+      throw new KeyNotFoundException();
     }
   }
 }

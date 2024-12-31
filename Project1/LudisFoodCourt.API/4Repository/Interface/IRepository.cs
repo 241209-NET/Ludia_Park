@@ -26,7 +26,7 @@ public interface IDinerRepository
 
 public interface ICartRepository
 {
-  // Cart? GetById(int cartId);      ////////////////////////////////////
+  Cart? GetById(int cartId);   
   Cart Add(Cart cart);
 }
 
@@ -35,6 +35,7 @@ public interface ICartItemRepository
   CartItem? GetByIdAndFoodId(int cartId, int foodId);  
   void Update(CartItem cartItem);   //  no need to return anything cuz cart contains get all cart items only.
   void Delete(CartItem cartItem);
+  IEnumerable<CartItem>? GetAllByCartId(int cartId);
 }
 
 

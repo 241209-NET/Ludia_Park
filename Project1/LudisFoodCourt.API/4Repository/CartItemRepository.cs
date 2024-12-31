@@ -27,4 +27,9 @@ public class CartItemRepository : ICartItemRepository
     _dataContext.CartItems.Remove(cartItem);
     _dataContext.SaveChanges();
   }
+
+  public IEnumerable<CartItem>? GetAllByCartId(int cartId)
+  {
+    return _dataContext.CartItems.Where(c => c.CartId == cartId).ToList();
+  }
 }
