@@ -31,7 +31,21 @@ public class CartsController : ControllerBase
     }
     catch (KeyNotFoundException e)  // cart item was not found
     {
-      return NotFound(new { message = e.Message});  // returns specific message cuz url not so clear
+      return NotFound(new { message = e.Message });  // returns specific message cuz url not so clear
     }   
+  }
+
+  [HttpDelete("{cartId}/foods/{foodId}")]
+  public IActionResult DeleteCartItem(int cartId, int foodId)
+  {
+    try
+    {
+      _cartItemService.DeleteCartItem(cartId, foodId);  // if this works
+      return NoContent(); // returns 204 No Content for successful deletion
+    }
+    catch (KeyNotFoundException e)  // cart item not found
+    {
+      return NotFound(new { message = e.Message }); // 404 if food not found
+    }
   }
 }

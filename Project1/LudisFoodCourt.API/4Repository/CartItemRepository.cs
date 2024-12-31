@@ -21,4 +21,10 @@ public class CartItemRepository : ICartItemRepository
     _dataContext.CartItems.Update(cartItem);
     _dataContext.SaveChanges();
   }
+
+  public void Delete(CartItem cartItem)
+  {
+    _dataContext.CartItems.Remove(cartItem);
+    _dataContext.SaveChanges();
+  }
 }

@@ -29,11 +29,8 @@ public interface IDinerService
 
 public interface ICartItemService
 {
-  // CartItem? GetByIdAndFoodId(int cartId, int foodId);    don't need
   void UpdateCartItem(int cartId, int foodId, int qty);
-  
-  // helper function:
-  bool CheckCartItemExists(int cartId, int foodId);
+  void DeleteCartItem(int cartId, int foodId);
 }
 
 

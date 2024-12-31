@@ -32,8 +32,9 @@ public interface ICartRepository
 
 public interface ICartItemRepository
 {
-  CartItem? GetByIdAndFoodId(int cartId, int foodId);  ////////////////
+  CartItem? GetByIdAndFoodId(int cartId, int foodId);  
   void Update(CartItem cartItem);   //  no need to return anything cuz cart contains get all cart items only.
+  void Delete(CartItem cartItem);
 }
 
 

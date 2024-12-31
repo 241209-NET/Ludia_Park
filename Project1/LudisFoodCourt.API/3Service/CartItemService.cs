@@ -26,10 +26,16 @@ public class CartItemService : ICartItemService
     } 
   }
 
-  // helper function to check if vendor exists:
-  public bool CheckCartItemExists(int cartId, int foodId)
+  public void DeleteCartItem(int cartId, int foodId)
   {
-    var foundCartItem = _cartItemRepository.GetByIdAndFoodId(cartId, foodId);
-    return foundCartItem != null;
+    var existingCartItem = _cartItemRepository.GetByIdAndFoodId(cartId, foodId);
+    if (existingCartItem != null)
+    {
+      _cartItemRepository.Delete(existingCartItem);
+    }
+    else
+    {
+      throw new KeyNotFoundException("CartItem not found.");
+    }
   }
 }
