@@ -15,7 +15,7 @@ public class CartItem   // joint table
   public int FoodId { get; set; }
 
   [Required]
-  public int Qty { get; set; }
+  public int Qty { get; set; } = 1;
   
   // Navigation property: 1 Cart has Many CartItems
   public Cart Cart { get; set; } 

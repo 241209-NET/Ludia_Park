@@ -17,7 +17,7 @@ public class FoodService : IFoodService
   public Food? UpdateFood(int foodId, Food food)  // return updated food or null
   { 
     // 1. try to get the food
-    var existingFood = _foodRepository.GetById(foodId);
+    var existingFood = _foodRepository.GetById(foodId);     // var type in case null return
 
     if (existingFood == null) return null;    // food not found
 

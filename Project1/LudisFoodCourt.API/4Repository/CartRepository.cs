@@ -11,6 +11,11 @@ public class CartRepository : ICartRepository
     _dataContext = dataContext;
   }
 
+  public Cart? GetById(int cartId)
+  {
+    return _dataContext.Carts.Find(cartId);
+  }
+
   public Cart Add(Cart cart)
   {
     _dataContext.Carts.Add(cart);

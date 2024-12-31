@@ -25,11 +25,9 @@ public class FoodRepository : IFoodRepository
 
   public Food? Update(Food food)
   {
-    {
-      _dataContext.Foods.Update(food);
-      _dataContext.SaveChanges();
-      return food;
-    }
+    _dataContext.Foods.Update(food);
+    _dataContext.SaveChanges();
+    return food;
   }
 
   public Food? GetById(int foodId)            // 201

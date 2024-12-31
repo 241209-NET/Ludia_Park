@@ -27,6 +27,16 @@ public interface IDinerService
   Diner CreateDinerAndCart(Diner diner);
 }
 
+public interface ICartItemService
+{
+  // CartItem? GetByIdAndFoodId(int cartId, int foodId);    don't need
+  void UpdateCartItem(int cartId, int foodId, int qty);
+  
+  // helper function:
+  bool CheckCartItemExists(int cartId, int foodId);
+}
+
+
 /*
 - Separation of concerns: 
 The interface separates the definition of the service (the "what" the service does) 
