@@ -1,4 +1,5 @@
 using LudisFoodCourt.Api.Service;
+using LudisFoodCourt.Api.DTO; 
 using Microsoft.AspNetCore.Mvc;
 
 namespace LudisFoodCourt.Api.Controller;
@@ -49,7 +50,27 @@ public class CartsController : ControllerBase
     }
   }
 
-  // [HttpPost("{cartId}/foods")]
+  [HttpPost("{cartId}/foods")]
+  public IActionResult CreateCartItem(int cartId, [FromBody] CartItemInputDTO cartItemInputDto)
+  {
+    // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
+    if (!ModelState.IsValid)
+    {
+      return BadRequest(ModelState);
+    }
+
+    try
+    {
+      // create the cartItem first
+      _cartItemService.CreateCartItem(cartId, cartItemInputDto.FoodId, cartItemInputDto.Qty);
+      // cartItemInputDto already encapsulates the whole desired object, so we can refer to it here:
+      return CreatedAtAction(nameof(GetAllCartItems), new { cartId = cartId }, cartItemInputDto);
+    }
+    catch (KeyNotFoundException e)
+    { // cart not found or food not found
+      return NotFound(new { message = e.Message });
+    }
+  }
 
   [HttpGet("{cartId}")]
   public IActionResult GetAllCartItems(int cartId)
