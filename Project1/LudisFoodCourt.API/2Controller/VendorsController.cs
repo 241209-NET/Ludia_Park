@@ -1,5 +1,6 @@
 using LudisFoodCourt.Api.Model;
 using LudisFoodCourt.Api.Service;
+using LudisFoodCourt.Api.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LudisFoodCourt.Api.Controller;
@@ -7,8 +8,8 @@ namespace LudisFoodCourt.Api.Controller;
 
 [Route("api/[controller]")]    // in ASP.NET must use double quotes, DO NOT start with /.
 [ApiController]                // auto validates model of incoming req's.
-public class VendorsController : ControllerBase    
-{                                     
+public class VendorsController : ControllerBase
+{
   private readonly IVendorService _vendorService;   // declaring private field for interfaces
   private readonly IFoodService _foodService;
 
@@ -32,31 +33,41 @@ public class VendorsController : ControllerBase
     return Ok(foodsOfVendor);
   }
 
-  [HttpPost("{vendorId}/foods")]
-  public IActionResult AddFoodToMenu(int vendorId, [FromBody] Food food)
+  [HttpPost("{vendorId}/foods")]      // doesn't work
+  public IActionResult AddFoodToMenu(int vendorId, [FromBody] FoodInputDTO foodInputDTO)
   {
+
+    // return Ok(new { message = "endpoint works", foodInputDTO});  // debugging
     // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
     if (!ModelState.IsValid)
     {
       return BadRequest(ModelState);
     }
 
-    var newFood = _vendorService.AddFoodToMenu(vendorId, food);
+    // create the new food:
+    var createdFood = new Food
+    {
+      Name = foodInputDTO.Name,
+      Price = foodInputDTO.Price,
+      VendorId = vendorId // We get the vendorId from the route
+    };
+
+    var newFood = _vendorService.AddFoodToMenu(vendorId, createdFood);
 
     // if vendor not found:
     if (newFood == null)
     {
-      return NotFound(new { message = "Vendor not found" });  // custom NotFound msg
-    }    
+      return NotFound("Vendor not found");  // custom NotFound msg
+    }
 
-    return CreatedAtAction(nameof(FoodsController.GetFoodById), new { foodId = newFood.Id }, newFood);
+    return Ok(newFood);
   }
 
   [HttpGet("{vendorId}")]
   public IActionResult GetVendorById(int vendorId)    // for 201 status
   {
     var foundVendor = _vendorService.GetVendorById(vendorId);
-    
+
     // if vendor not found:
     if (foundVendor == null) return NotFound();    // no need for custom, since this is plain vendor. 
     return Ok(foundVendor);

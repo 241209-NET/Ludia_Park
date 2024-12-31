@@ -28,6 +28,13 @@ public class CartItemRepository : ICartItemRepository
     _dataContext.SaveChanges();
   }
 
+  public CartItem Add(CartItem cartItem)
+  {
+    _dataContext.CartItems.Add(cartItem);
+    _dataContext.SaveChanges();
+    return cartItem;
+  }
+
   public IEnumerable<CartItem>? GetAllByCartId(int cartId)
   {
     return _dataContext.CartItems.Where(c => c.CartId == cartId).ToList();

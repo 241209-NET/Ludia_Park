@@ -7,11 +7,13 @@ public class CartItemService : ICartItemService
 {
   private readonly ICartItemRepository _cartItemRepository;
   private readonly ICartRepository _cartRepository;
+  private readonly IFoodRepository _foodRepository;
 
-  public CartItemService(ICartItemRepository cartItemRepository, ICartRepository cartRepository)
+  public CartItemService(ICartItemRepository cartItemRepository, ICartRepository cartRepository, IFoodRepository foodRepository)
   {
     _cartItemRepository = cartItemRepository;
     _cartRepository = cartRepository;
+    _foodRepository = foodRepository;
   }
   
   public void UpdateCartItem(int cartId, int foodId, int qty)
@@ -39,6 +41,33 @@ public class CartItemService : ICartItemService
     {
       throw new KeyNotFoundException("CartItem not found.");
     }
+  }
+
+  public void CreateCartItem(int cartId, int foodId, int qty)
+  {
+    // 1. check if cart exists
+    var cart = _cartRepository.GetById(cartId);
+    if (cart == null)
+    {
+      throw new KeyNotFoundException("Cart not found.");
+    }
+
+    // 2. check if food exists
+    var food = _foodRepository.GetById(foodId);
+    if (food == null)
+    {
+      throw new KeyNotFoundException("Food not found.");
+    }
+
+    // 3. create cartItem record
+    var newCartItem = new CartItem
+    {
+      CartId = cartId,
+      FoodId = foodId,
+      Qty = qty
+    };
+
+    _cartItemRepository.Add(newCartItem);
   }
 
   public IEnumerable<CartItem>? GetAllCartItems(int cartId)

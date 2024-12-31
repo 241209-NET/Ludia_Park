@@ -56,7 +56,6 @@ public class FoodsController : ControllerBase
   public IActionResult GetFoodById(int foodId)    // for 201 status
   {
     var foundFood = _foodService.GetFoodById(foodId);
-    
     if (foundFood == null) return NotFound();  
     return Ok(foundFood);
   }

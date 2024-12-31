@@ -19,6 +19,12 @@ builder.Services.AddScoped<IVendorService, VendorService>();
 builder.Services.AddScoped<IVendorRepository, VendorRepository>();
 builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<IFoodRepository, FoodRepository>();
+builder.Services.AddScoped<IDinerService, DinerService>();
+builder.Services.AddScoped<IDinerRepository, DinerRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
+
+
 
 // Add our controllers
 builder.Services.AddControllers()
