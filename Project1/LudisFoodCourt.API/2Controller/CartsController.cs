@@ -90,13 +90,10 @@ public class CartsController : ControllerBase
     var cartItemDtos = allCartItems.Select(c => new CartItemOutputDTO
     {
       FoodId = c.FoodId,
-      Name = c.Food.Name,
+      Name = c.Food?.Name,
       Qty = c.Qty
     }).ToList();
 
     return Ok(cartItemDtos);
   }
 }
-
-// need to make get cart item by id endpoint, all other layers good
-// need to remake CreatedAtAction

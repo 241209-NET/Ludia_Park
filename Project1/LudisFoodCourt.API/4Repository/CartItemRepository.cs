@@ -1,5 +1,6 @@
 using LudisFoodCourt.Api.Data;
 using LudisFoodCourt.Api.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace LudisFoodCourt.Api.Repository;
 
@@ -37,7 +38,10 @@ public class CartItemRepository : ICartItemRepository
 
   public IEnumerable<CartItem>? GetAllByCartId(int cartId)
   {
-    return _dataContext.CartItems.Where(c => c.CartId == cartId).ToList();
+    return _dataContext.CartItems
+                            .Where(c => c.CartId == cartId)
+                            .Include(c => c.Food)  // Ensure Food is eagerly loaded
+                            .ToList(); 
   }
 
   public CartItem? GetById(int cartItemId)
