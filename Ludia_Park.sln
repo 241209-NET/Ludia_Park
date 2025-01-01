@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LudisFoodCourt.API", "Proje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniConsole", "Project0\miniConsole.csproj", "{3D8259F9-C6F6-4300-AC94-BE8DD4FA1852}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LudisFoodCourt.TEST", "Project1\LudisFoodCourt.TEST\LudisFoodCourt.TEST.csproj", "{6B1BBD85-E5E8-4FE3-9367-D051A9B7ABE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{3D8259F9-C6F6-4300-AC94-BE8DD4FA1852}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D8259F9-C6F6-4300-AC94-BE8DD4FA1852}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D8259F9-C6F6-4300-AC94-BE8DD4FA1852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B1BBD85-E5E8-4FE3-9367-D051A9B7ABE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B1BBD85-E5E8-4FE3-9367-D051A9B7ABE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B1BBD85-E5E8-4FE3-9367-D051A9B7ABE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B1BBD85-E5E8-4FE3-9367-D051A9B7ABE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A137D694-11A1-44DC-BAC4-ABB4575DF36C} = {CC63CA22-0020-43C2-81CB-A8B071951597}
+		{6B1BBD85-E5E8-4FE3-9367-D051A9B7ABE7} = {CC63CA22-0020-43C2-81CB-A8B071951597}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99F8BCD2-FDF7-4886-A937-C0EEF1B29FD7}
