@@ -152,4 +152,56 @@ public class VendorServiceTests
         Assert.Null(res);  // must be null cuz vendor doesn't exist
     }
 
+    [Fact]
+    public void GetAllFoodsOfVendor_VendorDoesNotExistTest()
+    {
+        // Arrange
+        Mock<IVendorRepository> mockVendorRepo = new();
+        Mock<IFoodRepository> mockFoodRepo = new();
+
+        var vendorId = 1;
+        var vendorService = new VendorService(mockVendorRepo.Object, mockFoodRepo.Object);
+
+        // Mock the vendor repository to return null (vendor doesn't exist)
+        mockVendorRepo.Setup(repo => repo.GetById(vendorId)).Returns((Vendor)null); // or mock CheckVendorExists method to return false
+
+        // Act
+        var result = vendorService.GetAllFoodsOfVendor(vendorId);
+
+        // Assert
+        Assert.Null(result); // Since vendor does not exist, the method should return null
+    }
+
+    [Fact]
+    public void GetAllFoodsOfVendor_VendorExistsTest()
+    {
+        // Arrange
+        Mock<IVendorRepository> mockVendorRepo = new();
+        Mock<IFoodRepository> mockFoodRepo = new();
+        
+        var vendorId = 1;
+        var vendorService = new VendorService(mockVendorRepo.Object, mockFoodRepo.Object);
+
+        // with mock repo, enter our test vendorId, should return our new fake Vendor with that Id.
+        mockVendorRepo.Setup(repo => repo.GetById(vendorId)).Returns(new Vendor { Id = vendorId, Name = "Waffle House" });
+
+        // fake food list to add to Waffle House
+        var foodList = new List<Food>
+        {
+            new Food { Id = 1, Name = "Waffles", Price = 5.99m, VendorId = vendorId },
+            new Food { Id = 2, Name = "Pancakes", Price = 4.99m, VendorId = vendorId }
+        };
+
+        mockFoodRepo.Setup(repo => repo.GetAllByVendor(vendorId)).Returns(foodList);
+
+        // Act
+        var res = vendorService.GetAllFoodsOfVendor(vendorId);
+
+        // Assert
+        Assert.NotNull(res); 
+        Assert.Equal(2, res.Count()); // 2 foods in list
+        Assert.Contains(res, f => f.Name == "Waffles"); // res = collection to check, f is food element
+        Assert.Contains(res, f => f.Name == "Pancakes"); 
+    }
+
 }
