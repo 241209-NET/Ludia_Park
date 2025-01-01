@@ -31,8 +31,9 @@ public interface ICartItemService
 {
   void UpdateCartItem(int cartId, int foodId, int qty);
   void DeleteCartItem(int cartId, int foodId);
-  void CreateCartItem(int cartId, int foodId, int qty);
+  CartItem CreateCartItem(int cartId, int foodId, int qty);
   IEnumerable<CartItem>? GetAllCartItems(int cartId);
+  CartItem? GetById(int cartItemId);
 }
 
 

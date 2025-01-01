@@ -43,7 +43,7 @@ public class CartItemService : ICartItemService
     }
   }
 
-  public void CreateCartItem(int cartId, int foodId, int qty)
+  public CartItem CreateCartItem(int cartId, int foodId, int qty)
   {
     // 1. check if cart exists
     var cart = _cartRepository.GetById(cartId);
@@ -68,6 +68,8 @@ public class CartItemService : ICartItemService
     };
 
     _cartItemRepository.Add(newCartItem);
+
+    return _cartItemRepository.GetById(newCartItem.Id);
   }
 
   public IEnumerable<CartItem>? GetAllCartItems(int cartId)
@@ -78,5 +80,10 @@ public class CartItemService : ICartItemService
     
     // 2. if exists, get all items.
     return _cartItemRepository.GetAllByCartId(cartId);
+  }
+
+  public CartItem? GetById(int cartItemId)
+  {
+    return _cartItemRepository.GetById(cartItemId);
   }
 }

@@ -39,4 +39,9 @@ public class CartItemRepository : ICartItemRepository
   {
     return _dataContext.CartItems.Where(c => c.CartId == cartId).ToList();
   }
+
+  public CartItem? GetById(int cartItemId)
+  {
+    return _dataContext.CartItems.Find(cartItemId);
+  }
 }

@@ -62,14 +62,21 @@ public class CartsController : ControllerBase
     try
     {
       // create the cartItem first
-      _cartItemService.CreateCartItem(cartId, cartItemInputDto.FoodId, cartItemInputDto.Qty);
-      // cartItemInputDto already encapsulates the whole desired object, so we can refer to it here:
-      return CreatedAtAction(nameof(GetAllCartItems), new { cartId = cartId }, cartItemInputDto);
+      var newCartItem = _cartItemService.CreateCartItem(cartId, cartItemInputDto.FoodId, cartItemInputDto.Qty);
+      
+      // map it:
+      var cartItemDto = new CartItemOutputDTO
+      {
+        FoodId = newCartItem.FoodId,
+        Name = newCartItem.Food.Name,
+        Qty = newCartItem.Qty
+      };
+      return Ok(cartItemDto);    // can make a new endpoint GetCartItemById for CreatedAtAction
     }
     catch (KeyNotFoundException e)
     { // cart not found or food not found
       return NotFound(new { message = e.Message });
-    }
+    };
   }
 
   [HttpGet("{cartId}")]
@@ -78,6 +85,18 @@ public class CartsController : ControllerBase
     var allCartItems = _cartItemService.GetAllCartItems(cartId);
     // cart not found:
     if (allCartItems == null) return NotFound(new { message = "Cart not found." });
-    return Ok(allCartItems);
+
+    // map it:
+    var cartItemDtos = allCartItems.Select(c => new CartItemOutputDTO
+    {
+      FoodId = c.FoodId,
+      Name = c.Food.Name,
+      Qty = c.Qty
+    }).ToList();
+
+    return Ok(cartItemDtos);
   }
 }
+
+// need to make get cart item by id endpoint, all other layers good
+// need to remake CreatedAtAction
