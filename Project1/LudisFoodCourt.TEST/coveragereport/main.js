@@ -223,8 +223,8 @@ var assemblies = [
     "classes": [
       { "name": "LudisFoodCourt.Api.Service.CartItemService", "rp": "LudisFoodCourt.API_CartItemService.html", "cl": 0, "ucl": 51, "cal": 51, "tl": 89, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "LudisFoodCourt.Api.Service.DinerService", "rp": "LudisFoodCourt.API_DinerService.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 45, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "LudisFoodCourt.Api.Service.FoodService", "rp": "LudisFoodCourt.API_FoodService.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 64, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "LudisFoodCourt.Api.Service.VendorService", "rp": "LudisFoodCourt.API_VendorService.html", "cl": 23, "ucl": 4, "cal": 27, "tl": 61, "cb": 2, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "LudisFoodCourt.Api.Service.FoodService", "rp": "LudisFoodCourt.API_FoodService.html", "cl": 11, "ucl": 18, "cal": 29, "tl": 64, "cb": 2, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "LudisFoodCourt.Api.Service.VendorService", "rp": "LudisFoodCourt.API_VendorService.html", "cl": 27, "ucl": 0, "cal": 27, "tl": 61, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 

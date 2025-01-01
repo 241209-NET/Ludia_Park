@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.0163" branch-rate="0.0689" version="1.9" timestamp="1735766046" lines-covered="36" lines-valid="2197" branches-covered="4" branches-valid="58">
+<coverage line-rate="0.0213" branch-rate="0.10339999999999999" version="1.9" timestamp="1735769165" lines-covered="47" lines-valid="2197" branches-covered="6" branches-valid="58">
   <sources>
     <source>/home/bebep/RevTraining/Ludia_Park/Project1/LudisFoodCourt.API/</source>
   </sources>
   <packages>
-    <package name="LudisFoodCourt.API" line-rate="0.0163" branch-rate="0.0689" complexity="183">
+    <package name="LudisFoodCourt.API" line-rate="0.0213" branch-rate="0.10339999999999999" complexity="183">
       <classes>
         <class name="Program" filename="Program.cs" line-rate="0" branch-rate="0" complexity="2">
           <methods>
@@ -4276,7 +4276,7 @@
             <line number="15" hits="0" branch="False" />
           </lines>
         </class>
-        <class name="LudisFoodCourt.Api.Service.FoodService" filename="3Service/FoodService.cs" line-rate="0" branch-rate="0" complexity="10">
+        <class name="LudisFoodCourt.Api.Service.FoodService" filename="3Service/FoodService.cs" line-rate="0.37929999999999997" branch-rate="0.25" complexity="10">
           <methods>
             <method name="UpdateFood" signature="(System.Int32,LudisFoodCourt.Api.Model.Food)" line-rate="0" branch-rate="0" complexity="6">
               <lines>
@@ -4316,27 +4316,27 @@
                 <line number="51" hits="0" branch="False" />
               </lines>
             </method>
-            <method name="DeleteFood" signature="(System.Int32)" line-rate="0" branch-rate="0" complexity="2">
+            <method name="DeleteFood" signature="(System.Int32)" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="54" hits="0" branch="False" />
-                <line number="57" hits="0" branch="False" />
-                <line number="59" hits="0" branch="True" condition-coverage="0% (0/2)">
+                <line number="54" hits="2" branch="False" />
+                <line number="57" hits="2" branch="False" />
+                <line number="59" hits="2" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
-                    <condition number="20" type="jump" coverage="0%" />
+                    <condition number="20" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="60" hits="0" branch="False" />
-                <line number="61" hits="0" branch="False" />
-                <line number="63" hits="0" branch="False" />
+                <line number="60" hits="1" branch="False" />
+                <line number="61" hits="1" branch="False" />
+                <line number="63" hits="1" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(LudisFoodCourt.Api.Repository.IFoodRepository,LudisFoodCourt.Api.Service.IVendorService)" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(LudisFoodCourt.Api.Repository.IFoodRepository,LudisFoodCourt.Api.Service.IVendorService)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="0" branch="False" />
-                <line number="12" hits="0" branch="False" />
-                <line number="13" hits="0" branch="False" />
-                <line number="14" hits="0" branch="False" />
-                <line number="15" hits="0" branch="False" />
+                <line number="11" hits="2" branch="False" />
+                <line number="12" hits="2" branch="False" />
+                <line number="13" hits="2" branch="False" />
+                <line number="14" hits="2" branch="False" />
+                <line number="15" hits="2" branch="False" />
               </lines>
             </method>
           </methods>
@@ -4371,21 +4371,21 @@
             <line number="48" hits="0" branch="False" />
             <line number="50" hits="0" branch="False" />
             <line number="51" hits="0" branch="False" />
-            <line number="54" hits="0" branch="False" />
-            <line number="57" hits="0" branch="False" />
-            <line number="59" hits="0" branch="True" condition-coverage="0% (0/2)">
+            <line number="54" hits="2" branch="False" />
+            <line number="57" hits="2" branch="False" />
+            <line number="59" hits="2" branch="True" condition-coverage="100% (2/2)">
               <conditions>
-                <condition number="20" type="jump" coverage="0%" />
+                <condition number="20" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="60" hits="0" branch="False" />
-            <line number="61" hits="0" branch="False" />
-            <line number="63" hits="0" branch="False" />
-            <line number="11" hits="0" branch="False" />
-            <line number="12" hits="0" branch="False" />
-            <line number="13" hits="0" branch="False" />
-            <line number="14" hits="0" branch="False" />
-            <line number="15" hits="0" branch="False" />
+            <line number="60" hits="1" branch="False" />
+            <line number="61" hits="1" branch="False" />
+            <line number="63" hits="1" branch="False" />
+            <line number="11" hits="2" branch="False" />
+            <line number="12" hits="2" branch="False" />
+            <line number="13" hits="2" branch="False" />
+            <line number="14" hits="2" branch="False" />
+            <line number="15" hits="2" branch="False" />
           </lines>
         </class>
         <class name="LudisFoodCourt.Api.Service.VendorService" filename="3Service/VendorService.cs" line-rate="1" branch-rate="1" complexity="9">
