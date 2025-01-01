@@ -13,6 +13,13 @@ public class CartItemInputDTO
   public int Qty { get; set; } = 1;
 }
 
+public class CartItemInput2DTO
+{
+  [Required]
+  [Range(1, int.MaxValue, ErrorMessage = "Qty must be greater than 0.")]
+  public int Qty { get; set; } = 1;
+}
+
 public class CartItemOutputDTO
 {
   public int FoodId { get; set; }

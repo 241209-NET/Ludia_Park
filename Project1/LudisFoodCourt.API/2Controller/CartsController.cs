@@ -17,7 +17,7 @@ public class CartsController : ControllerBase
   }
 
   [HttpPut("{cartId}/foods/{foodId}")]
-  public IActionResult UpdateCartItem(int cartId, int foodId, [FromBody] int qty)
+  public IActionResult UpdateCartItem(int cartId, int foodId, [FromBody] CartItemInput2DTO cartItemInput2DTO)
   {
     // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
     if (!ModelState.IsValid)
@@ -27,7 +27,7 @@ public class CartsController : ControllerBase
 
     try
     {
-      _cartItemService.UpdateCartItem(cartId, foodId, qty);
+      _cartItemService.UpdateCartItem(cartId, foodId, cartItemInput2DTO.Qty);
       return NoContent();   // 204 successful, but no body return
     }
     catch (KeyNotFoundException e)  // cart item was not found
