@@ -16,11 +16,11 @@ public class VendorServiceTests
         Mock<IFoodRepository> mockFoodRepo = new();
         VendorService vendorService = new(mockVendorRepo.Object, mockFoodRepo.Object);
 
-        var newVendor = new Vendor 
-        { 
-            Id = 1, 
+        var newVendor = new Vendor
+        {
+            Id = 1,
             Name = "Waffle House",
-            FoodType = "Waffles" 
+            FoodType = "Waffles"
         };
 
         mockVendorRepo.Setup(repo => repo.Add(It.IsAny<Vendor>())).Returns(newVendor);
@@ -55,7 +55,7 @@ public class VendorServiceTests
         var res = vendorService.GetAllVendors();
 
         // Assert
-        Assert.NotNull(res);  
+        Assert.NotNull(res);
         Assert.Equal(2, res.Count());  // 2 vendors in this test
         Assert.Equal("Waffle House", res.First().Name);  // Check if the first vendor's name matches
         Assert.Equal("Pete's Place", res.Last().Name);   // check if 2nd's name matches
@@ -63,5 +63,34 @@ public class VendorServiceTests
         mockVendorRepo.Verify(repo => repo.GetAll(), Times.Once());
     }
 
-    
+    [Fact]
+    public void GetVendorByIdTest()
+    {
+        // Arrange
+        Mock<IVendorRepository> mockVendorRepo = new();
+        Mock<IFoodRepository> mockFoodRepo = new();
+
+        var vendorId = 1;           // let's say u wanna find vendor 1
+        var vendor = new Vendor     // make example vendor 1
+        {
+            Id = vendorId,
+            Name = "Waffle House",
+            FoodType = "Waffles"
+        };
+
+        // setup the mock repo to find by our example vendorId
+        mockVendorRepo.Setup(repo => repo.GetById(vendorId)).Returns(vendor);
+
+        // after setup, pass mock into a new vendor service
+        var vendorService = new VendorService(mockVendorRepo.Object, mockFoodRepo.Object);
+
+        // Act: do the thing
+        var res = vendorService.GetVendorById(vendorId);
+        
+        // Assert
+        Assert.NotNull(res);
+        Assert.Equal(vendorId, res.Id);
+        Assert.Equal("Waffle House", res.Name);
+    }
+
 }
