@@ -93,4 +93,63 @@ public class VendorServiceTests
         Assert.Equal("Waffle House", res.Name);
     }
 
+    [Fact]
+    public void AddFoodToMenu_VendorExistsTest()
+    {
+        // Arrange
+        Mock<IVendorRepository> mockVendorRepo = new();
+        Mock<IFoodRepository> mockFoodRepo = new();
+
+        var vendorId = 1;
+        var food = new Food
+        {
+            Name = "Waffle",
+            Price = 5.99M       // need M for decimal type
+        };
+
+        // mocking getById to get back a vendor (check if it exists)
+        // we don't need to make a full vendor object, just a 간딴한 one, only checking if it actually returns what we give it.
+        mockVendorRepo.Setup(repo => repo.GetById(vendorId)).Returns(new Vendor { Id = vendorId, Name = "Waffle House" });
+
+        // mocking adding food (any food) to return "Waffle" food.
+        mockFoodRepo.Setup(repo => repo.Add(It.IsAny<Food>())).Returns(food);
+
+        var vendorService = new VendorService(mockVendorRepo.Object, mockFoodRepo.Object);
+
+        // Act
+        var res = vendorService.AddFoodToMenu(vendorId, food);
+
+        // Assert
+        Assert.NotNull(res);
+        Assert.Equal(food.Name, res.Name);
+        Assert.Equal(food.Price, res.Price);
+        Assert.Equal(vendorId, res.VendorId);
+    }
+
+    // [Fact]
+    // public void AddFoodToMenu_ReturnsNull_WhenVendorDoesNotExist()
+    // {
+    //     // Arrange
+    //     var mockFoodRepo = new Mock<IFoodRepository>();
+    //     var mockVendorRepo = new Mock<IVendorRepository>();
+
+    //     var vendorId = 999; // Vendor that doesn't exist
+    //     var food = new Food
+    //     {
+    //         Name = "Waffle",
+    //         Price = 5.99m
+    //     };
+
+    //     // Mock the behavior of the GetById method to return null (vendor doesn't exist)
+    //     mockVendorRepo.Setup(repo => repo.GetById(vendorId)).Returns((Vendor)null);
+
+    //     var vendorService = new VendorService(mockVendorRepo.Object, mockFoodRepo.Object);
+
+    //     // Act
+    //     var result = vendorService.AddFoodToMenu(vendorId, food);
+
+    //     // Assert
+    //     Assert.Null(result);  // Ensure the result is null because the vendor doesn't exist
+    // }
+
 }
