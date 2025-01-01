@@ -24,6 +24,20 @@ public class FoodInputDTO
   public decimal Price { get; set; }
 }
 
+public class FoodInput2DTO
+{
+  [Required]
+  [MaxLength(50)]
+  public string Name { get; set; } 
+
+  [Required]
+  [Column(TypeName = "decimal(4, 2)")]
+  public decimal Price { get; set; }
+
+  [Required]
+  public int VendorId { get; set; }
+}
+
 public class FoodOutputDTO
 {
   public int Id { get; set; }

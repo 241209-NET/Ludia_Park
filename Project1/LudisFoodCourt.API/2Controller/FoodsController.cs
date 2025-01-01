@@ -1,5 +1,6 @@
 using LudisFoodCourt.Api.Model;
 using LudisFoodCourt.Api.Service;
+using LudisFoodCourt.Api.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LudisFoodCourt.Api.Controller;
@@ -19,37 +20,57 @@ public class FoodsController : ControllerBase
   }
 
   [HttpPut("{foodId}/edit")]
-  public IActionResult UpdateFood(int foodId, [FromBody] Food food)
+  public IActionResult UpdateFood(int foodId, [FromBody] FoodInput2DTO foodInput2DTO)
   {
     // Automatically checks if the model is valid (based on annotations like [Required], [MaxLength], etc.)
     if (!ModelState.IsValid)
     {
       return BadRequest(ModelState);
     }
-    
-    // tell service to check if food exists there before updating
-    var updatedFood = _foodService.UpdateFood(foodId, food);
 
-    // check each type of null, provide the correct status for each
-    if (updatedFood == null) 
+    // Get the existing food
+    var existingFood = _foodService.GetFoodById(foodId);
+
+    if (existingFood.VendorId != foodInput2DTO.VendorId)
     {
-      // try getting it first
-      var existingFood = _foodService.GetFoodById(foodId);
-
-      // 1. if the VendorId's don't match the original food's VendorId:
-      if (existingFood?.VendorId != food.VendorId)  // may be null food
-      {
-        return Forbid();
-      }
-
-      // 2. if vendor doesn't exist:
-      bool vendorExists = _vendorService.CheckVendorExists(food.VendorId);
-      if (!vendorExists) return NotFound();
-
-      // 3. food not found:
-      return NotFound();
+      return Forbid(); // The VendorId in the DTO doesn't match the existing food's VendorId
     }
-    return Ok(updatedFood);
+
+    // Check if the vendor exists
+    bool vendorExists = _vendorService.CheckVendorExists(foodInput2DTO.VendorId);
+    if (!vendorExists)
+    {
+      return NotFound("Vendor not found");
+    }
+
+    // Map from input dto to Food entity
+    var foodToUpdate = new Food
+    {
+      Id = foodId,  // Keep the original ID
+      Name = foodInput2DTO.Name,
+      Price = foodInput2DTO.Price,
+      VendorId = foodInput2DTO.VendorId
+    };
+
+    // use the full obj to UpdateFood method in service
+    var updatedFood = _foodService.UpdateFood(foodId, foodToUpdate);
+
+    if (updatedFood == null)
+    {
+      return NotFound("Food not found"); 
+    }
+
+    // Map the updatedFood obj to FoodOutput2DTO
+    var foodDto = new FoodOutput2DTO
+    {
+      Id = updatedFood.Id,
+      Name = updatedFood.Name,
+      Price = updatedFood.Price,
+      VendorId = updatedFood.VendorId
+    };
+
+    // Return the updated food
+    return Ok(foodDto);
   }
 
   [HttpGet("{foodId}")]
