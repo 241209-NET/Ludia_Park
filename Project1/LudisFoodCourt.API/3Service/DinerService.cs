@@ -27,12 +27,18 @@ public class DinerService : IDinerService
     // 2. create cart, link it to diner
     var newCart = new Cart
     {
-      DinerId = newDiner.Id,      // give it the diner's id
+      DinerId = newDiner.Id     // give it the diner's id
       // omit Total, since default starts at 0
     };
 
     // 3. add cart to repo
-    _cartRepository.Add(newCart);
+    var createdCart = _cartRepository.Add(newCart);
+
+    // 4. Update the diner with the correct CartId
+    newDiner.CartId = createdCart.Id;
+
+    // 5. Update the diner in the repository with the CartId
+    _dinerRepository.Update(newDiner);
 
     return newDiner;     
   }

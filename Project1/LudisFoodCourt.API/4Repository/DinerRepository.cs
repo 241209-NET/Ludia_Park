@@ -15,6 +15,13 @@ public class DinerRepository : IDinerRepository
   {
     return _dataContext.Diners.Find(dinerId);
   }
+
+  public Diner? Update(Diner diner)
+  {
+    _dataContext.Diners.Update(diner);
+    _dataContext.SaveChanges();
+    return diner;
+  }
     
   public Diner Add(Diner diner)
   {

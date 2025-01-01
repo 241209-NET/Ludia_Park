@@ -13,6 +13,25 @@ public class CartItemInputDTO
   public int Qty { get; set; } = 1;
 }
 
+public class DinerInputDTO
+{
+  [Required]
+  [MaxLength(50)]
+  public string Name { get; set; }
+}
+
+public class DinerOutputDTO
+{
+  public int Id { get; set; }
+
+  [Required]
+  [MaxLength(50)]
+  public string Name { get; set; }
+
+  [Required]
+  public int CartId { get; set; }
+}
+
 public class FoodInputDTO
 {
   [Required]
